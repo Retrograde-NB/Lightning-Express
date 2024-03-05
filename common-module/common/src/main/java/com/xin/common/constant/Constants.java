@@ -1,0 +1,15 @@
+package com.xin.common.constant;
+
+/**
+ * @Author Retrograde-LX
+ * @Date 2024/03/05 下午 2:11
+ * @Version 1.0
+ * @Remark 又是程序猿秃头的一天
+ * 通用常量信息
+ */
+public class Constants {
+    /**
+     * 自动识别json对象白名单配置（仅允许解析的包名，范围越小越安全）
+     */
+    public static final String[] JSON_WHITELIST_STR = { "org.springframework", "com.xin" };
+}
