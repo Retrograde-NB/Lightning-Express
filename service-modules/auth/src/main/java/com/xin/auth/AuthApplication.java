@@ -2,6 +2,8 @@ package com.xin.auth;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
  * @Author Retrograde-LX
@@ -9,7 +11,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Version 1.0
  * @Remark 又是程序猿秃头的一天
  */
-@SpringBootApplication
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
+@EnableDiscoveryClient
 public class AuthApplication {
     public static void main(String[] args) {
         SpringApplication.run(AuthApplication.class, args);
