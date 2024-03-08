@@ -1,6 +1,8 @@
 package com.xin.auth.controller;
 
-import org.springframework.web.bind.annotation.RestController;
+import com.xin.auth.domain.dto.AdminLoginDTO;
+import com.xin.common.result.ResponseResult;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @Author Retrograde-LX
@@ -9,5 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
  * @Remark 又是程序猿秃头的一天
  */
 @RestController
+@RequestMapping("/api/auth")
 public class LoginController {
+    @PostMapping("/admin/login")
+    public ResponseResult adminLogin(@RequestBody AdminLoginDTO adminLoginDTO){
+
+        return null;
+    }
 }
