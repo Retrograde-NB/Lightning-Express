@@ -1,9 +1,11 @@
 package com.xin.auth.controller;
 
 import com.xin.auth.domain.dto.AdminLoginDTO;
+import com.xin.auth.service.LoginService;
 import com.xin.common.result.ResponseResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -16,10 +18,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/auth")
 @Api(description = "登录管理")
 public class LoginController {
+    @Autowired
+    private LoginService loginService;
     @PostMapping("/admin/login")
     @ApiOperation(value = "后台登录")
     public ResponseResult adminLogin(@RequestBody AdminLoginDTO adminLoginDTO){
-
-        return null;
+        String token = loginService.adminLogin(adminLoginDTO);
+        return ResponseResult.ok(token, "登陆成功");
     }
 }

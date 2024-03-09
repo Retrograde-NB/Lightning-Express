@@ -1,21 +1,6 @@
-server:
-  port: 2001
+
 spring:
   application:
     name: service-auth
-  jackson:
-    date-format: yyyy-MM-dd HH:mm:ss
-    time-zone: GMT+8
-  cloud:
-    nacos:
-      discovery:
-        server-addr: 192.168.109.4:1111
-        username: nacos
-        password: nacos
-  mvc:
-    pathmatch:
-      #这里配置的这个参数是为了解决spring boot和swagger版本不兼容的问题
-      matching-strategy: ant_path_matcher
-
-swagger:
-  enabled: true
+  profiles:
+    active: dev

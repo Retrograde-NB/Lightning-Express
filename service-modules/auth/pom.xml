@@ -19,5 +19,11 @@
     <description>
         auth认证授权中心
     </description>
-
+    <dependencies>
+        <dependency>
+            <groupId>com.xin</groupId>
+            <artifactId>common-redis</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+    </dependencies>
 </project>

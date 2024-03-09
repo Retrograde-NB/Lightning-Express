@@ -21,4 +21,5 @@ public class Constants {
      * 失败标记
      */
     public static final Integer FAIL = 500;
+
 }

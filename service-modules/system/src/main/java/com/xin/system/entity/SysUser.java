@@ -97,87 +97,123 @@ public class SysUser implements Serializable {
     @ApiModelProperty("删除标志（0代表未删除，1代表已删除）")
     private Integer delFlag;
 
+    public SysUser(Long id, String userName, String nickName, String password, String status, String phonenumber, String avatar, String createBy, Date createTime, String updateBy, Date updateTime, Integer delFlag) {
+        this.id = id;
+        this.userName = userName;
+        this.nickName = nickName;
+        this.password = password;
+        this.status = status;
+        this.phonenumber = phonenumber;
+        this.avatar = avatar;
+        this.createBy = createBy;
+        this.createTime = createTime;
+        this.updateBy = updateBy;
+        this.updateTime = updateTime;
+        this.delFlag = delFlag;
+    }
+
+    public SysUser() {
+    }
+
+    @Override
+    public String toString() {
+        return "SysUser{" +
+                "id=" + id +
+                ", userName='" + userName + '\'' +
+                ", nickName='" + nickName + '\'' +
+                ", password='" + password + '\'' +
+                ", status='" + status + '\'' +
+                ", phonenumber='" + phonenumber + '\'' +
+                ", avatar='" + avatar + '\'' +
+                ", createBy='" + createBy + '\'' +
+                ", createTime=" + createTime +
+                ", updateBy='" + updateBy + '\'' +
+                ", updateTime=" + updateTime +
+                ", delFlag=" + delFlag +
+                '}';
+    }
+
     /**
      * 主键
      */
-    private void setId(Long id){
+    public void setId(Long id){
         this.id = id;
     }
 
     /**
      * 用户名
      */
-    private void setUserName(String userName){
+    public void setUserName(String userName){
         this.userName = userName;
     }
 
     /**
      * 昵称
      */
-    private void setNickName(String nickName){
+    public void setNickName(String nickName){
         this.nickName = nickName;
     }
 
     /**
      * 密码
      */
-    private void setPassword(String password){
+    public void setPassword(String password){
         this.password = password;
     }
 
     /**
      * 账号状态（0正常 1停用）
      */
-    private void setStatus(String status){
+    public void setStatus(String status){
         this.status = status;
     }
 
     /**
      * 手机号
      */
-    private void setPhonenumber(String phonenumber){
+    public void setPhonenumber(String phonenumber){
         this.phonenumber = phonenumber;
     }
 
     /**
      * 头像
      */
-    private void setAvatar(String avatar){
+    public void setAvatar(String avatar){
         this.avatar = avatar;
     }
 
     /**
      * 创建者
      */
-    private void setCreateBy(String createBy){
+    public void setCreateBy(String createBy){
         this.createBy = createBy;
     }
 
     /**
      * 创建时间
      */
-    private void setCreateTime(Date createTime){
+    public void setCreateTime(Date createTime){
         this.createTime = createTime;
     }
 
     /**
      * 更新者
      */
-    private void setUpdateBy(String updateBy){
+    public void setUpdateBy(String updateBy){
         this.updateBy = updateBy;
     }
 
     /**
      * 更新时间
      */
-    private void setUpdateTime(Date updateTime){
+    public void setUpdateTime(Date updateTime){
         this.updateTime = updateTime;
     }
 
     /**
      * 删除标志（0代表未删除，1代表已删除）
      */
-    private void setDelFlag(Integer delFlag){
+    public void setDelFlag(Integer delFlag){
         this.delFlag = delFlag;
     }
 
@@ -185,84 +221,84 @@ public class SysUser implements Serializable {
     /**
      * 主键
      */
-    private Long getId(){
+    public Long getId(){
         return this.id;
     }
 
     /**
      * 用户名
      */
-    private String getUserName(){
+    public String getUserName(){
         return this.userName;
     }
 
     /**
      * 昵称
      */
-    private String getNickName(){
+    public String getNickName(){
         return this.nickName;
     }
 
     /**
      * 密码
      */
-    private String getPassword(){
+    public String getPassword(){
         return this.password;
     }
 
     /**
      * 账号状态（0正常 1停用）
      */
-    private String getStatus(){
+    public String getStatus(){
         return this.status;
     }
 
     /**
      * 手机号
      */
-    private String getPhonenumber(){
+    public String getPhonenumber(){
         return this.phonenumber;
     }
 
     /**
      * 头像
      */
-    private String getAvatar(){
+    public String getAvatar(){
         return this.avatar;
     }
 
     /**
      * 创建者
      */
-    private String getCreateBy(){
+    public String getCreateBy(){
         return this.createBy;
     }
 
     /**
      * 创建时间
      */
-    private Date getCreateTime(){
+    public Date getCreateTime(){
         return this.createTime;
     }
 
     /**
      * 更新者
      */
-    private String getUpdateBy(){
+    public String getUpdateBy(){
         return this.updateBy;
     }
 
     /**
      * 更新时间
      */
-    private Date getUpdateTime(){
+    public Date getUpdateTime(){
         return this.updateTime;
     }
 
     /**
      * 删除标志（0代表未删除，1代表已删除）
      */
-    private Integer getDelFlag(){
+    public Integer getDelFlag(){
         return this.delFlag;
     }
 

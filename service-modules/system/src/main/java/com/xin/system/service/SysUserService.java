@@ -10,4 +10,5 @@ import com.xin.system.entity.SysUser;
  * @Remark 又是程序猿秃头的一天
  */
 public interface SysUserService extends IService<SysUser> {
+    SysUser getUserInfoByUsername(String username);
 }
