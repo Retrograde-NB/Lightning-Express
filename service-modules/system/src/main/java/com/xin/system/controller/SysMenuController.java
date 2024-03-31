@@ -1,9 +1,16 @@
 package com.xin.system.controller;
 
+import com.xin.common.result.ResponseResult;
 import com.xin.system.service.SysMenuService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * @Author Retrograde-LX
@@ -13,7 +20,18 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/api/admin/menu")
+@Api(description = "后台菜单管理")
 public class SysMenuController {
-    @Autowired
-    private SysMenuService sysMenuService;
+    private final SysMenuService sysMenuService;
+
+    public SysMenuController(SysMenuService sysMenuService) {
+        this.sysMenuService = sysMenuService;
+    }
+    @GetMapping("/getPermissionById/{id}")
+    @ApiOperation(value = "根据用户id获取权限")
+    public ResponseResult<List<String>> getPermissionById(@PathVariable("id") Long id) {
+        List<String> permissionList = sysMenuService.getPermissionById(id);
+        return ResponseResult.ok(permissionList);
+    }
+
 }

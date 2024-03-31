@@ -13,13 +13,18 @@ import org.springframework.web.bind.annotation.*;
  * @Date 2024/03/05 下午 8:48
  * @Version 1.0
  * @Remark 又是程序猿秃头的一天
+ * 用户认证
  */
 @RestController
 @RequestMapping("/api/auth")
 @Api(description = "登录管理")
 public class LoginController {
-    @Autowired
-    private LoginService loginService;
+    private final LoginService loginService;
+
+    public LoginController(LoginService loginService) {
+        this.loginService = loginService;
+    }
+
     @PostMapping("/admin/login")
     @ApiOperation(value = "后台登录")
     public ResponseResult adminLogin(@RequestBody AdminLoginDTO adminLoginDTO){

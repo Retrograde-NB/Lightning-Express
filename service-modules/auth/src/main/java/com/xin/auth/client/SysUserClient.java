@@ -20,4 +20,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface SysUserClient {
     @GetMapping("/api/admin/user/getUserInfoByUsername/{username}")
     ResponseResult<UserInfoVo> getUserInfo(@PathVariable("username") String username);
+
+    @GetMapping("/api/admin/user/getUserInfoById/{id}")
+    ResponseResult<UserInfoVo> getUserInfo(@PathVariable("id") Long id);
+
 }

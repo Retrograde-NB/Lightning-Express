@@ -21,5 +21,9 @@ public class Constants {
      * 失败标记
      */
     public static final Integer FAIL = 500;
+    /**
+     * UTF-8 字符集
+     */
+    public static final String UTF8 = "UTF-8";
 
 }

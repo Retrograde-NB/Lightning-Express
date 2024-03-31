@@ -4,7 +4,10 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xin.system.entity.SysMenu;
 import com.xin.system.mapper.SysMenuMapper;
 import com.xin.system.service.SysMenuService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @Author Retrograde-LX
@@ -14,4 +17,12 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> implements SysMenuService {
+    @Autowired
+    private SysMenuMapper sysMenuMapper;
+
+
+    @Override
+    public List<String> getPermissionById(Long id) {
+        return sysMenuMapper.getPermissionById(id);
+    }
 }

@@ -2,6 +2,9 @@ package com.xin.system.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.xin.system.entity.SysMenu;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * @Author Retrograde-LX
@@ -10,4 +13,5 @@ import com.xin.system.entity.SysMenu;
  * @Remark 又是程序猿秃头的一天
  */
 public interface SysMenuMapper extends BaseMapper<SysMenu> {
+    List<String> getPermissionById(@Param("id") Long id);
 }

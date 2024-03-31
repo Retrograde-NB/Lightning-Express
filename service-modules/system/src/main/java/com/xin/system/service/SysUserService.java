@@ -11,4 +11,6 @@ import com.xin.system.entity.SysUser;
  */
 public interface SysUserService extends IService<SysUser> {
     SysUser getUserInfoByUsername(String username);
+
+    SysUser getUserInfoById(Long id);
 }

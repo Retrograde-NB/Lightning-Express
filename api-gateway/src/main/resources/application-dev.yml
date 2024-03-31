@@ -1,0 +1,20 @@
+server:
+  port: 6666
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: service-auth
+          uri: lb://service-auth
+          predicates:
+            - Path=/api/auth/**
+        - id: service-system
+          uri: lb://service-system
+          predicates:
+            - Path=/api/admin/**

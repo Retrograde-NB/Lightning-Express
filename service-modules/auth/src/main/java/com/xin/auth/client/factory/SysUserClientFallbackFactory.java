@@ -24,7 +24,12 @@ public class SysUserClientFallbackFactory implements FallbackFactory<SysUserClie
         return new SysUserClient() {
             @Override
             public ResponseResult<UserInfoVo> getUserInfo(String username) {
-                return ResponseResult.fail("获取用户失败:" + throwable.getMessage());
+                return ResponseResult.fail("获取用户信息失败:" + throwable.getMessage());
+            }
+
+            @Override
+            public ResponseResult<UserInfoVo> getUserInfo(Long id) {
+                return ResponseResult.fail("获取用户信息失败:" + throwable.getMessage());
             }
         };
     }

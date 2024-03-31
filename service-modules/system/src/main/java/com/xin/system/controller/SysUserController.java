@@ -5,6 +5,7 @@ import com.xin.common.result.ResponseResult;
 import com.xin.system.entity.SysUser;
 import com.xin.system.service.SysUserService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
@@ -25,14 +26,30 @@ import java.util.Objects;
 @RequestMapping("/api/admin/user")
 @Api(description = "后台用户管理")
 public class SysUserController {
-    @Autowired
-    private SysUserService sysUserService;
+    private final SysUserService sysUserService;
+
+    public SysUserController(SysUserService sysUserService) {
+        this.sysUserService = sysUserService;
+    }
 
     @GetMapping("/getUserInfoByUsername/{username}")
+    @ApiOperation(value = "根据用户名获取信息")
     public ResponseResult getUserInfoByUsername(@PathVariable("username") String username){
         SysUser sysUser = sysUserService.getUserInfoByUsername(username);
         if (Objects.isNull(sysUser)) {
             return ResponseResult.fail("用户名或密码错误");
+        }
+        UserInfoVo userInfoVo = new UserInfoVo();
+        BeanUtils.copyProperties(sysUser, userInfoVo);
+        return ResponseResult.ok(userInfoVo);
+    }
+    @GetMapping("/getUserInfoById/{id}")
+    @ApiOperation(value = "根据id获取信息")
+    public ResponseResult getUserInfoById(@PathVariable("id") Long id){
+        // TODO 判断token
+        SysUser sysUser = sysUserService.getUserInfoById(id);
+        if (Objects.isNull(sysUser)) {
+            return ResponseResult.fail("获取失败");
         }
         UserInfoVo userInfoVo = new UserInfoVo();
         BeanUtils.copyProperties(sysUser, userInfoVo);

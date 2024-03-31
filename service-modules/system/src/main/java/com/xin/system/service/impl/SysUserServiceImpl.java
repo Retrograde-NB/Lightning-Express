@@ -21,4 +21,9 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         wrapper.eq("user_name", username);
         return this.getOne(wrapper);
     }
+
+    @Override
+    public SysUser getUserInfoById(Long id) {
+        return this.getById(id);
+    }
 }

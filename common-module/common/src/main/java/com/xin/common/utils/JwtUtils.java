@@ -61,16 +61,15 @@ public class JwtUtils {
         }
         return true;
     }
+
     /**
      * 根据token获取会员id
-     * @param request
+     * @param jwtToken
      * @return
      */
-    public static String getMemberIdByJwtToken(HttpServletRequest request) {
-        String jwtToken = request.getHeader("token");
-        if(StringUtils.isEmpty(jwtToken)) return "";
+    public static Long getMemberIdByJwtToken(String jwtToken) {
         Jws<Claims> claimsJws = Jwts.parser().setSigningKey(APP_SECRET).parseClaimsJws(jwtToken);
         Claims claims = claimsJws.getBody();
-        return (String)claims.get("id");
+        return Long.parseLong(claims.get("id").toString());
     }
 }
