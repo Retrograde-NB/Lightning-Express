@@ -1,6 +1,5 @@
 package com.xin.auth.service.impl;
 
-import cn.hutool.core.util.StrUtil;
 import com.xin.auth.client.SysMenuClient;
 import com.xin.auth.client.SysRoleClient;
 import com.xin.auth.client.SysUserClient;
@@ -13,10 +12,9 @@ import com.xin.common.exception.XinException;
 import com.xin.common.redis.service.RedisService;
 import com.xin.common.result.ResponseResult;
 import com.xin.common.utils.JwtUtils;
-import com.xin.common.utils.ServletUtils;
+import com.xin.common.utils.ReflectionUtils;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -44,19 +42,13 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     @Override
     public AdminUserInfoVo getAdminUserInfo() {
-        // 获取token
-        HttpServletRequest request = ServletUtils.getRequest();
-        if (request == null) {
-            throw new XinException(Constants.FAIL, "获取失败");
+        // 获取当前用户id
+        Long id = JwtUtils.getId();
+        String token = JwtUtils.getToken();
+        String redisToken = redisService.getCacheObject(RedisConstants.ADMIN_TOKEN_KEY + id);
+        if (redisToken == null || !redisToken.equals(token)) {
+            throw new XinException(Constants.FAIL, "token不存在请重新登陆！");
         }
-        String token = request.getHeader("token");
-        if (StrUtil.isEmpty(token)) {
-            throw new XinException(Constants.FAIL, "获取失败,无token");
-        }
-        if (!JwtUtils.checkToken(token)) {
-            throw new XinException(Constants.FAIL, "凭证已过期请从新认证");
-        }
-        Long id = JwtUtils.getMemberIdByJwtToken(token);
         // 获取权限
         List<String> permissionList = redisService.getCacheList(RedisConstants.PERMISSION_KEY + id);
         if (permissionList.size() == 0) {
@@ -71,13 +63,22 @@ public class UserInfoServiceImpl implements UserInfoService {
             roleNameList = roleNameResult.getData();
             redisService.setCacheList(RedisConstants.ROLE_KEY + id, roleNameList);
         }
+        // 获取动态路由信息
+        List<String> routesList = redisService.getCacheList(RedisConstants.ROUTES_KEY + id);
+        if (routesList.size() == 0) {
+            ResponseResult<List<String>> routesResult = sysMenuClient.getRoutesById(id);
+            routesList = routesResult.getData();
+            redisService.setCacheList(RedisConstants.ROUTES_KEY + id, routesList);
+        }
         // 获取用户信息
         ResponseResult<UserInfoVo> userInfo = sysUserClient.getUserInfo(id);
         // 封装
-        AdminUserInfoVo adminUserInfoVo = new AdminUserInfoVo();
+        AdminUserInfoVo adminUserInfoVo = ReflectionUtils.newInstance(AdminUserInfoVo.class);
         adminUserInfoVo.setPermissions(permissionList);
         adminUserInfoVo.setRoles(roleNameList);
-        adminUserInfoVo.setUser(userInfo.getData());
+        adminUserInfoVo.setRoutes(routesList);
+        adminUserInfoVo.setUserName(userInfo.getData().getUserName());
+        adminUserInfoVo.setAvatar(userInfo.getData().getAvatar());
         return adminUserInfoVo;
     }
 }

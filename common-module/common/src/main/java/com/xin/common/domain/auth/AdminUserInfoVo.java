@@ -11,15 +11,19 @@ import java.util.List;
 public class AdminUserInfoVo {
     private List<String> permissions;
     private List<String> roles;
-    private UserInfoVo user;
+    private List<String> routes;
+    private String userName;
+    private String avatar;
 
-    public AdminUserInfoVo(List<String> permissions, List<String> roles, UserInfoVo user) {
-        this.permissions = permissions;
-        this.roles = roles;
-        this.user = user;
-    }
-
-    public AdminUserInfoVo() {
+    @Override
+    public String toString() {
+        return "AdminUserInfoVo{" +
+                "permissions=" + permissions +
+                ", roles=" + roles +
+                ", routes=" + routes +
+                ", userName='" + userName + '\'' +
+                ", avatar='" + avatar + '\'' +
+                '}';
     }
 
     public List<String> getPermissions() {
@@ -38,20 +42,38 @@ public class AdminUserInfoVo {
         this.roles = roles;
     }
 
-    public UserInfoVo getUser() {
-        return user;
+    public List<String> getRoutes() {
+        return routes;
     }
 
-    public void setUser(UserInfoVo user) {
-        this.user = user;
+    public void setRoutes(List<String> routes) {
+        this.routes = routes;
     }
 
-    @Override
-    public String toString() {
-        return "AdminUserInfoVo{" +
-                "permissions=" + permissions +
-                ", roles=" + roles +
-                ", user=" + user +
-                '}';
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public AdminUserInfoVo() {
+    }
+
+    public AdminUserInfoVo(List<String> permissions, List<String> roles, List<String> routes, String userName, String avatar) {
+        this.permissions = permissions;
+        this.roles = roles;
+        this.routes = routes;
+        this.userName = userName;
+        this.avatar = avatar;
     }
 }

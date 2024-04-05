@@ -25,4 +25,9 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
     public List<String> getPermissionById(Long id) {
         return sysMenuMapper.getPermissionById(id);
     }
+
+    @Override
+    public List<String> getRoutesById(Long id) {
+        return sysMenuMapper.getRoutesById(id);
+    }
 }

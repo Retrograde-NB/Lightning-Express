@@ -1,9 +1,13 @@
 package com.xin.common.utils;
 
+import cn.hutool.core.util.StrUtil;
+import com.xin.common.constant.Constants;
+import com.xin.common.exception.XinException;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,8 +22,13 @@ import java.util.Date;
 public class JwtUtils {
     public static final long EXPIRE = 1000 * 60 * 60 * 24;
     public static final String APP_SECRET = "ukc8BDbRigUDaY6pZFfWus2jZWLPHO";
+    /**
+     * 根据id生成token
+     * @param id id
+     * @return token
+     */
     public static String getJwtToken(Long id){
-        String JwtToken = Jwts.builder()
+        return Jwts.builder()
                 .setHeaderParam("typ", "JWT")
                 .setHeaderParam("alg", "HS256")
                 .setSubject("xin-user")
@@ -28,12 +37,11 @@ public class JwtUtils {
                 .claim("id", id)
                 .signWith(SignatureAlgorithm.HS256, APP_SECRET)
                 .compact();
-        return JwtToken;
     }
     /**
      * 判断token是否存在与有效
-     * @param jwtToken
-     * @return
+     * @param jwtToken token
+     * @return 是否存在有效
      */
     public static boolean checkToken(String jwtToken) {
         if(StringUtils.isEmpty(jwtToken)) return false;
@@ -47,8 +55,8 @@ public class JwtUtils {
     }
     /**
      * 判断token是否存在与有效
-     * @param request
-     * @return
+     * @param request 请求头
+     * @return 是否存在有效
      */
     public static boolean checkToken(HttpServletRequest request) {
         try {
@@ -64,12 +72,43 @@ public class JwtUtils {
 
     /**
      * 根据token获取会员id
-     * @param jwtToken
-     * @return
+     * @param jwtToken token
+     * @return id
      */
-    public static Long getMemberIdByJwtToken(String jwtToken) {
+    public static Long getIdByJwtToken(String jwtToken) {
         Jws<Claims> claimsJws = Jwts.parser().setSigningKey(APP_SECRET).parseClaimsJws(jwtToken);
         Claims claims = claimsJws.getBody();
         return Long.parseLong(claims.get("id").toString());
+    }
+
+    /**
+     * 根据请求头获取id
+     * @return id
+     */
+    public static Long getId(){
+        HttpServletRequest request = ServletUtils.getRequest();
+        if (request == null) {
+            throw new XinException(Constants.FAIL, "获取失败");
+        }
+        String token = request.getHeader("token");
+        if (StrUtil.isEmpty(token)) {
+            throw new XinException(Constants.FAIL, "获取失败,无token");
+        }
+        if (!JwtUtils.checkToken(token)) {
+            throw new XinException(Constants.FAIL, "凭证已过期请从新认证");
+        }
+        return JwtUtils.getIdByJwtToken(token);
+    }
+
+    /**
+     * 获取当前请求的token
+     * @return token
+     */
+    public static String getToken(){
+        HttpServletRequest request = ServletUtils.getRequest();
+        if (request == null) {
+            throw new XinException(Constants.FAIL, "获取失败");
+        }
+        return request.getHeader("token");
     }
 }

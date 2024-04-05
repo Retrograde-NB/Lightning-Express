@@ -34,4 +34,11 @@ public class SysMenuController {
         return ResponseResult.ok(permissionList);
     }
 
+    @GetMapping("/getRoutesById/{id}")
+    @ApiOperation(value = "根据id获取路由信息")
+    public ResponseResult<List<String>> getRoutesById(@PathVariable("id") Long id){
+        List<String> routesList = sysMenuService.getRoutesById(id);
+        return ResponseResult.ok(routesList);
+    }
+
 }

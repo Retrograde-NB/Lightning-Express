@@ -11,7 +11,19 @@
                 LEFT JOIN `sys_menu` m ON m.`id` = rm.`menu_id`
         WHERE
             ur.`user_id` = #{id} AND
-            m.`menu_type` IN ('C','F') AND
+            m.`menu_type` = 'F' AND
+            m.`status` = 0
+    </select>
+    <select id="getRoutesById" resultType="java.lang.String">
+        SELECT
+            DISTINCT m.perms
+        FROM
+            `sys_user_role` ur
+                LEFT JOIN `sys_role_menu` rm ON ur.`role_id` = rm.`role_id`
+                LEFT JOIN `sys_menu` m ON m.`id` = rm.`menu_id`
+        WHERE
+            ur.`user_id` = #{id} AND
+            m.`menu_type` IN ('M','C') AND
             m.`status` = 0
     </select>
 </mapper>

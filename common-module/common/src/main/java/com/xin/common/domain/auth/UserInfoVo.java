@@ -13,6 +13,19 @@ public class UserInfoVo {
     private String password;
     private String status;
 
+    private String avatar;
+
+    @Override
+    public String toString() {
+        return "UserInfoVo{" +
+                "id=" + id +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", status='" + status + '\'' +
+                ", avatar='" + avatar + '\'' +
+                '}';
+    }
+
     public Long getId() {
         return id;
     }
@@ -45,24 +58,22 @@ public class UserInfoVo {
         this.status = status;
     }
 
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
 
     public UserInfoVo() {
     }
 
-    public UserInfoVo(Long id, String userName, String password, String status) {
+    public UserInfoVo(Long id, String userName, String password, String status, String avatar) {
         this.id = id;
         this.userName = userName;
         this.password = password;
         this.status = status;
-    }
-
-    @Override
-    public String toString() {
-        return "UserInfoVo{" +
-                "id=" + id +
-                ", userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
-                ", status='" + status + '\'' +
-                '}';
+        this.avatar = avatar;
     }
 }

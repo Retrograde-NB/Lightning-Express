@@ -4,6 +4,7 @@ import com.xin.auth.client.SysUserClient;
 import com.xin.auth.domain.dto.AdminLoginDTO;
 import com.xin.auth.service.LoginService;
 import com.xin.common.constant.Constants;
+import com.xin.common.constant.RedisConstants;
 import com.xin.common.constant.UserConstants;
 import com.xin.common.domain.auth.UserInfoVo;
 import com.xin.common.enums.UserStatus;
@@ -74,7 +75,7 @@ public class LoginServiceImpl implements LoginService {
             throw new XinException(Constants.FAIL, "密码错误");
         }
         String token = JwtUtils.getJwtToken(responseResult.getData().getId());
-        redisService.setCacheObject("token", token);
+        redisService.setCacheObject(RedisConstants.ADMIN_TOKEN_KEY + responseResult.getData().getId(), token);
         return token;
     }
 }

@@ -14,4 +14,6 @@ import java.util.List;
  */
 public interface SysMenuMapper extends BaseMapper<SysMenu> {
     List<String> getPermissionById(@Param("id") Long id);
+
+    List<String> getRoutesById(Long id);
 }

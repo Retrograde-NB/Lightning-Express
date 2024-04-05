@@ -13,4 +13,6 @@ import java.util.List;
  */
 public interface SysMenuService extends IService<SysMenu> {
     List<String> getPermissionById(Long id);
+
+    List<String> getRoutesById(Long id);
 }

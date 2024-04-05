@@ -28,6 +28,11 @@ public class SysMenuClientFallbackFactory implements FallbackFactory<SysMenuClie
             public ResponseResult<List<String>> getPermissionById(Long id) {
                 return ResponseResult.fail("获取菜单权限失败:" + throwable.getMessage());
             }
+
+            @Override
+            public ResponseResult<List<String>> getRoutesById(Long id) {
+                return ResponseResult.fail("获取动态路由信息失败:" + throwable.getMessage());
+            }
         };
     }
 }

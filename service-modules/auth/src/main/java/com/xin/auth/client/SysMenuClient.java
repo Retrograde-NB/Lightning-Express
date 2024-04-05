@@ -21,4 +21,7 @@ import java.util.List;
 public interface SysMenuClient {
     @GetMapping("/api/admin/menu/getPermissionById/{id}")
     public ResponseResult<List<String>> getPermissionById(@PathVariable("id") Long id);
+
+    @GetMapping("/api/admin/menu/getRoutesById/{id}")
+    public ResponseResult<List<String>> getRoutesById(@PathVariable("id") Long id);
 }
