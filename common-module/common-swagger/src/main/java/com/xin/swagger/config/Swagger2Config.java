@@ -21,6 +21,7 @@ import java.util.Set;
  * @Date 2024/03/08 上午 10:36
  * @Version 1.0
  * @Remark 又是程序猿秃头的一天
+ * 地址 swagger-ui/index.html
  */
 
 @Configuration
@@ -50,7 +51,7 @@ public class Swagger2Config {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder().title("Swagger Api Doc")
                 .description("接口文档")
-                .contact(new Contact("user", null, "xyz@qq.com"))
+                .contact(new Contact("user", null, "2352017802@qq.com"))
                 .version("Application Version: 1.0.0")
                 .build();
     }

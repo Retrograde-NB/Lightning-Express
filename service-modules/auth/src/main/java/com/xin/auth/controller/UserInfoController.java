@@ -5,6 +5,10 @@ import com.xin.common.domain.auth.AdminUserInfoVo;
 import com.xin.common.result.ResponseResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.ExternalDocumentation;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Info;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,16 +22,17 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/api/auth")
-@Api(description = "用户信息管理")
+@Tag(name = "user-info-controller", description = "用户信息管理接口")
 public class UserInfoController {
     private final UserInfoService userInfoService;
 
     public UserInfoController(UserInfoService userInfoService) {
         this.userInfoService = userInfoService;
     }
+
     @GetMapping("/getAdminUserInfo")
     @ApiOperation(value = "获取后台用户信息")
-    public ResponseResult getAdminUserInfo(){
+    public ResponseResult<AdminUserInfoVo> getAdminUserInfo() {
         AdminUserInfoVo adminUserInfoVo = userInfoService.getAdminUserInfo();
         return ResponseResult.ok(adminUserInfoVo);
     }

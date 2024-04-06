@@ -34,7 +34,7 @@
         <swagger.fox.version>3.0.0</swagger.fox.version>
         <swagger.core.version>1.6.2</swagger.core.version>
 <!--        <tobato.version>1.27.2</tobato.version>-->
-        <kaptcha.version>2.3.3</kaptcha.version>
+        <kaptcha.version>2.3.2</kaptcha.version>
         <pagehelper.boot.version>1.4.7</pagehelper.boot.version>
         <druid.version>1.2.16</druid.version>
 <!--        <dynamic-ds.version>3.5.2</dynamic-ds.version>-->
@@ -90,7 +90,7 @@
 
             <!-- 验证码 -->
             <dependency>
-                <groupId>pro.fessional</groupId>
+                <groupId>com.github.penggle</groupId>
                 <artifactId>kaptcha</artifactId>
                 <version>${kaptcha.version}</version>
             </dependency>

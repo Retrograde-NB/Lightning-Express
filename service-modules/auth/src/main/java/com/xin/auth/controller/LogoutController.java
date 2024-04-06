@@ -2,6 +2,7 @@ package com.xin.auth.controller;
 
 import com.xin.auth.service.LogoutService;
 import com.xin.common.result.ResponseResult;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/api/auth")
+@Tag(name = "logout-controller", description = "退出登录管理")
 public class LogoutController {
     private final LogoutService logoutService;
 

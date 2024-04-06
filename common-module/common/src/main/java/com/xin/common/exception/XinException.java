@@ -21,6 +21,9 @@ public class XinException extends RuntimeException {
         this.code = code;
         this.msg = msg;
     }
+    public XinException(String message, Throwable cause) {
+        super(message, cause);
+    }
     public Integer getCode() {
         return code;
     }

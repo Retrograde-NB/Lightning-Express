@@ -26,4 +26,8 @@ public class RedisConstants {
      * token
      */
     public static final String ADMIN_TOKEN_KEY = "admin-token:";
+    /**
+     * 验证码
+     */
+    public static final String VERIFICATION_CODE_KEY = "verification-code:";
 }

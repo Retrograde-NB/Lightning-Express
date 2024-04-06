@@ -34,7 +34,7 @@ public class SysUserController {
 
     @GetMapping("/getUserInfoByUsername/{username}")
     @ApiOperation(value = "根据用户名获取信息")
-    public ResponseResult getUserInfoByUsername(@PathVariable("username") String username){
+    public ResponseResult<UserInfoVo> getUserInfoByUsername(@PathVariable("username") String username){
         SysUser sysUser = sysUserService.getUserInfoByUsername(username);
         if (Objects.isNull(sysUser)) {
             return ResponseResult.fail("用户名或密码错误");
@@ -45,7 +45,7 @@ public class SysUserController {
     }
     @GetMapping("/getUserInfoById/{id}")
     @ApiOperation(value = "根据id获取信息")
-    public ResponseResult getUserInfoById(@PathVariable("id") Long id){
+    public ResponseResult<UserInfoVo> getUserInfoById(@PathVariable("id") Long id){
         // TODO 判断token
         SysUser sysUser = sysUserService.getUserInfoById(id);
         if (Objects.isNull(sysUser)) {
@@ -55,4 +55,6 @@ public class SysUserController {
         BeanUtils.copyProperties(sysUser, userInfoVo);
         return ResponseResult.ok(userInfoVo);
     }
+
+
 }

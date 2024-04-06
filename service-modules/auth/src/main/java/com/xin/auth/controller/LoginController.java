@@ -3,9 +3,8 @@ package com.xin.auth.controller;
 import com.xin.auth.domain.dto.AdminLoginDTO;
 import com.xin.auth.service.LoginService;
 import com.xin.common.result.ResponseResult;
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -17,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/api/auth")
-@Api(description = "登录管理")
+@Tag(name = "login-controller", description = "用户登录管理")
 public class LoginController {
     private final LoginService loginService;
 
@@ -27,7 +26,7 @@ public class LoginController {
 
     @PostMapping("/admin/login")
     @ApiOperation(value = "后台登录")
-    public ResponseResult adminLogin(@RequestBody AdminLoginDTO adminLoginDTO){
+    public ResponseResult<String> adminLogin(@RequestBody AdminLoginDTO adminLoginDTO){
         String token = loginService.adminLogin(adminLoginDTO);
         return ResponseResult.ok(token, "登陆成功");
     }

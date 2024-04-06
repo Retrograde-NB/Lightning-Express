@@ -66,10 +66,10 @@
         </dependency>
 
         <!--验证码 -->
-<!--        <dependency>-->
-<!--            <groupId>pro.fessional</groupId>-->
-<!--            <artifactId>kaptcha</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.github.penggle</groupId>
+            <artifactId>kaptcha</artifactId>
+        </dependency>
 
         <!-- Swagger -->
 <!--        <dependency>-->
@@ -91,6 +91,12 @@
         <dependency>
             <groupId>com.xin</groupId>
             <artifactId>common</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.xin</groupId>
+            <artifactId>common-redis</artifactId>
             <version>1.0.0</version>
         </dependency>
     </dependencies>
