@@ -3,6 +3,7 @@ package com.xin.gateway.filter;
 import com.alibaba.fastjson2.JSON;
 import com.xin.common.exception.XinException;
 import com.xin.common.result.ResponseResult;
+import com.xin.common.utils.WebResponseUtils;
 import com.xin.gateway.service.VerificationCodeService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
@@ -52,12 +53,7 @@ public class ValidateCodeFilter extends AbstractGatewayFilterFactory<Object> {
                 String uuid = Objects.requireNonNull(request.getHeaders().get(UUID)).get(0);
                 verificationCodeService.checkVerificationCode(code, uuid);
             } catch (XinException e) {
-                ServerHttpResponse response = exchange.getResponse();
-                response.setStatusCode(HttpStatus.OK);
-                response.getHeaders().add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
-                ResponseResult<?> result = ResponseResult.fail(ResponseResult.FAIL, e.getMessage());
-                DataBuffer dataBuffer = response.bufferFactory().wrap(JSON.toJSONString(result).getBytes());
-                return response.writeWith(Mono.just(dataBuffer));
+                return WebResponseUtils.webResponse(exchange.getResponse(), e.getMessage());
             }
             return chain.filter(exchange);
         };

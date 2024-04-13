@@ -1,5 +1,7 @@
 package com.xin.gateway.handler;
 
+import com.xin.common.result.ResponseResult;
+import com.xin.common.utils.Base64Utils;
 import com.xin.gateway.service.VerificationCodeService;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpStatus;
@@ -15,6 +17,7 @@ import reactor.core.publisher.Mono;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.Base64;
 import java.util.Map;
 
 /**
@@ -41,9 +44,13 @@ public class CaptchaImageHandler implements HandlerFunction<ServerResponse> {
         } catch (IOException e) {
             return Mono.error(e);
         }
+        byte[] bytes = os.toByteArray();
+        String encode = Base64Utils.encode(bytes);
+        ResponseResult<String> responseResult = ResponseResult.ok(encode);
+
         return ServerResponse.status(HttpStatus.OK)
-                .contentType(MediaType.IMAGE_JPEG)
-                .header("randomStr", verificationCode.get("randomStr").toString())
-                .body(BodyInserters.fromResource(new ByteArrayResource(os.toByteArray())));
+                .contentType(MediaType.APPLICATION_JSON)
+                .header("random-code", verificationCode.get("random-code").toString())
+                .body(BodyInserters.fromValue(responseResult));
     }
 }

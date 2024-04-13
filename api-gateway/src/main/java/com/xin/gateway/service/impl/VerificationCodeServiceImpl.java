@@ -42,7 +42,7 @@ public class VerificationCodeServiceImpl implements VerificationCodeService {
         // 保存验证码信息
         String randomStr = UUID.randomUUID().toString().replaceAll("-", "");
         redisService.setCacheObject(RedisConstants.VERIFICATION_CODE_KEY + randomStr, capText, 60L, TimeUnit.SECONDS);
-        map.put("randomStr", randomStr);
+        map.put("random-code", randomStr);
         map.put("image", image);
 
         return map;

@@ -20,7 +20,7 @@ public class RouterFunctionConfiguration {
     @Bean
     public RouterFunction<ServerResponse> routeFunction(CaptchaImageHandler captchaImageHandler){
         return RouterFunctions
-                .route(RequestPredicates.GET("/code")
+                .route(RequestPredicates.GET("/api/code")
                         .and(RequestPredicates.accept(MediaType.TEXT_PLAIN)), captchaImageHandler::handle);
     }
 }
