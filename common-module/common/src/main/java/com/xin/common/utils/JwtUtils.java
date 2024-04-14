@@ -8,6 +8,7 @@ import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
@@ -110,5 +111,9 @@ public class JwtUtils {
             throw new XinException(Constants.FAIL, "获取失败");
         }
         return request.getHeader("token");
+    }
+
+    public static String getToken(ServerHttpRequest request) {
+        return request.getHeaders().getFirst(Constants.TOKEN);
     }
 }
