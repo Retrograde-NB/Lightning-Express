@@ -1,13 +1,11 @@
 package com.xin.gateway.service.impl;
 
 import com.google.code.kaptcha.impl.DefaultKaptcha;
-import com.xin.common.constant.Constants;
 import com.xin.common.constant.RedisConstants;
 import com.xin.common.exception.XinException;
 import com.xin.common.redis.service.RedisService;
 import com.xin.common.utils.ReflectionUtils;
 import com.xin.gateway.service.VerificationCodeService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 

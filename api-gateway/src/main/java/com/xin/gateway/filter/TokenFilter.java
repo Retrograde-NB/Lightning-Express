@@ -51,18 +51,18 @@ public class TokenFilter implements GlobalFilter, Ordered {
         String token = JwtUtils.getToken(request);
         if (StringUtils.isEmpty(token)) {
             log.error("[鉴权异常处理]请求路径:{}", exchange.getRequest().getPath());
-            return WebResponseUtils.webResponse(exchange.getResponse(), "令牌不能为空!");
+            return WebResponseUtils.webFailResponse(exchange.getResponse(), "令牌不能为空!");
         }
         // 判断token是否有效或者是否过期
         if (!JwtUtils.checkToken(token)) {
             log.error("[鉴权异常处理]请求路径:{}", exchange.getRequest().getPath());
-            return WebResponseUtils.webResponse(exchange.getResponse(), "令牌已过期或验证不正确!");
+            return WebResponseUtils.webFailResponse(exchange.getResponse(), "令牌已过期或验证不正确!");
         }
         Long id = JwtUtils.getIdByJwtToken(token);
         String redisToken = redisService.getCacheObject(RedisConstants.ADMIN_TOKEN_KEY + id);
         if (!redisToken.equals(token)) {
             log.error("[鉴权异常处理]请求路径:{}", exchange.getRequest().getPath());
-            return WebResponseUtils.webResponse(exchange.getResponse(), "登录状态已过期!");
+            return WebResponseUtils.webFailResponse(exchange.getResponse(), "登录状态已过期!");
         }
         // TODO 存储日志
         return chain.filter(exchange.mutate().request(mutate.build()).build());
@@ -70,6 +70,6 @@ public class TokenFilter implements GlobalFilter, Ordered {
 
     @Override
     public int getOrder() {
-        return -1;
+        return -200;
     }
 }

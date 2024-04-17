@@ -16,7 +16,7 @@ import java.util.List;
  * @Version 1.0
  * @Remark 又是程序猿秃头的一天
  */
-@Component
+//@Component(value = "sysMenuClient")
 @FeignClient(contextId = "sysMenuClient", value = ServiceNameConstants.SYSTEM_SERVICE, fallbackFactory = SysMenuClientFallbackFactory.class)
 public interface SysMenuClient {
     @GetMapping("/api/admin/menu/getPermissionById/{id}")

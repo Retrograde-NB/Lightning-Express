@@ -45,7 +45,7 @@ public class ValidateCodeFilter extends AbstractGatewayFilterFactory<Object> {
                 String uuid = Objects.requireNonNull(request.getHeaders().get(UUID)).get(0);
                 verificationCodeService.checkVerificationCode(code, uuid);
             } catch (XinException e) {
-                return WebResponseUtils.webResponse(exchange.getResponse(), e.getMessage());
+                return WebResponseUtils.webFailResponse(exchange.getResponse(), e.getMessage());
             }
             return chain.filter(exchange);
         };

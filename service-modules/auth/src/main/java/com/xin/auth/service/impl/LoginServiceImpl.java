@@ -26,11 +26,14 @@ import java.util.Objects;
  */
 @Service
 public class LoginServiceImpl implements LoginService {
-    @Autowired
-    private RedisService redisService;
+    private final RedisService redisService;
 
-    @Autowired
-    private SysUserClient sysUserClient;
+    private final SysUserClient sysUserClient;
+
+    public LoginServiceImpl(RedisService redisService, SysUserClient sysUserClient) {
+        this.redisService = redisService;
+        this.sysUserClient = sysUserClient;
+    }
 
     @Override
     public String adminLogin(AdminLoginDTO adminLoginDTO) {

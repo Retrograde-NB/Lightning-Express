@@ -1,6 +1,5 @@
 package com.xin.auth.client.factory;
 
-import com.xin.auth.client.SysMenuClient;
 import com.xin.auth.client.SysRoleClient;
 import com.xin.common.result.ResponseResult;
 import org.slf4j.Logger;

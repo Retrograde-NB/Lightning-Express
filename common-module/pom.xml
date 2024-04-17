@@ -19,5 +19,6 @@
         <module>common-redis</module>
         <module>common</module>
         <module>common-swagger</module>
+        <module>common-log</module>
     </modules>
 </project>

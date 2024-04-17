@@ -16,7 +16,7 @@ import java.util.List;
  * @Version 1.0
  * @Remark 又是程序猿秃头的一天
  */
-@Component
+//@Component(value = "sysRoleClient")
 @FeignClient(contextId = "sysRoleClient", value = ServiceNameConstants.SYSTEM_SERVICE, fallbackFactory = SysRoleClientFallbackFactory.class)
 public interface SysRoleClient {
     @GetMapping("/api/admin/role/getRoleNameById/{id}")

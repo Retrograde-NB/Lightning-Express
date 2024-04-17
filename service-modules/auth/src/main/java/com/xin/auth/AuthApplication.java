@@ -15,7 +15,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * @Remark 又是程序猿秃头的一天
  */
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
-@ComponentScan({"com.xin"})
+@ComponentScan({"com.xin.api.client", "com.xin"})
 @EnableFeignClients
 @EnableDiscoveryClient
 public class AuthApplication {

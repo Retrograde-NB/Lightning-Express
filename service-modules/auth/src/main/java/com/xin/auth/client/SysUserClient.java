@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
  * @Version 1.0
  * @Remark 又是程序猿秃头的一天
  */
-@Component
+//@Component(value = "sysUserClient")
 @FeignClient(contextId = "sysUserClient", value = ServiceNameConstants.SYSTEM_SERVICE, fallbackFactory = SysUserClientFallbackFactory.class)
 public interface SysUserClient {
     @GetMapping("/api/admin/user/getUserInfoByUsername/{username}")

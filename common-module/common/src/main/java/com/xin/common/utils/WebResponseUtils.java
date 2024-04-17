@@ -17,10 +17,17 @@ import reactor.core.publisher.Mono;
  * 响应工具类
  */
 public class WebResponseUtils {
-    public static Mono<Void> webResponse(ServerHttpResponse response, String msg){
+    public static Mono<Void> webFailResponse(ServerHttpResponse response, String msg){
         response.setStatusCode(HttpStatus.OK);
         response.getHeaders().add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
-        ResponseResult<?> result = ResponseResult.fail(ResponseResult.FAIL, msg);
+        ResponseResult<String> result = ResponseResult.fail("失败", msg);
+        DataBuffer dataBuffer = response.bufferFactory().wrap(JSON.toJSONString(result).getBytes());
+        return response.writeWith(Mono.just(dataBuffer));
+    }
+    public static Mono<Void> webSuccessResponse(ServerHttpResponse response, String msg){
+        response.setStatusCode(HttpStatus.OK);
+        response.getHeaders().add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
+        ResponseResult<String> result = ResponseResult.fail("成功", msg);
         DataBuffer dataBuffer = response.bufferFactory().wrap(JSON.toJSONString(result).getBytes());
         return response.writeWith(Mono.just(dataBuffer));
     }
