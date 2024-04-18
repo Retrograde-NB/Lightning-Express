@@ -1,9 +1,9 @@
-package com.xin.auth.client;
+package com.xin.system.api.client;
 
-import com.xin.auth.client.factory.SysUserClientFallbackFactory;
 import com.xin.common.constant.ServiceNameConstants;
 import com.xin.common.domain.auth.UserInfoVo;
 import com.xin.common.result.ResponseResult;
+import com.xin.system.api.factory.SysUserClientFallbackFactory;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;

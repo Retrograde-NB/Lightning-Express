@@ -2,7 +2,7 @@ package com.xin.system.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.xin.system.entity.SysUser;
+import com.xin.system.domain.entity.SysUser;
 import com.xin.system.mapper.SysUserMapper;
 import com.xin.system.service.SysUserService;
 import org.springframework.stereotype.Service;

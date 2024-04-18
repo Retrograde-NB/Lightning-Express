@@ -1,8 +1,8 @@
-package com.xin.auth.client.factory;
+package com.xin.system.api.factory;
 
-import com.xin.auth.client.SysUserClient;
 import com.xin.common.domain.auth.UserInfoVo;
 import com.xin.common.result.ResponseResult;
+import com.xin.system.api.client.SysUserClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.openfeign.FallbackFactory;

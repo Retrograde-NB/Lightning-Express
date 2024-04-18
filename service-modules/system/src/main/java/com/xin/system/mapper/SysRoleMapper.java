@@ -1,7 +1,7 @@
 package com.xin.system.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.xin.system.entity.SysRole;
+import com.xin.system.domain.entity.SysRole;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.xin.system.entity;
+package com.xin.system.domain.entity;
 
 import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.Length;

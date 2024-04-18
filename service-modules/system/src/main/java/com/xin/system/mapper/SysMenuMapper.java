@@ -1,7 +1,7 @@
 package com.xin.system.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.xin.system.entity.SysMenu;
+import com.xin.system.domain.entity.SysMenu;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

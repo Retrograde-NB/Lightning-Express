@@ -4,6 +4,7 @@ import com.xin.common.result.ResponseResult;
 import com.xin.system.service.SysMenuService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,7 +21,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/api/admin/menu")
-@Api(description = "后台菜单管理")
+@Tag(name = "sys-menu-controller", description = "后台菜单管理")
 public class SysMenuController {
     private final SysMenuService sysMenuService;
 

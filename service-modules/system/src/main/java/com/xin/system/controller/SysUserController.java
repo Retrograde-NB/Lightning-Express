@@ -2,13 +2,11 @@ package com.xin.system.controller;
 
 import com.xin.common.domain.auth.UserInfoVo;
 import com.xin.common.result.ResponseResult;
-import com.xin.system.entity.SysUser;
+import com.xin.system.domain.entity.SysUser;
 import com.xin.system.service.SysUserService;
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +22,7 @@ import java.util.Objects;
  */
 @RestController
 @RequestMapping("/api/admin/user")
-@Api(description = "后台用户管理")
+@Tag(name = "sys-user-controller", description = "后台用户管理")
 public class SysUserController {
     private final SysUserService sysUserService;
 

@@ -27,4 +27,7 @@
             <version>1.0.0</version>
         </dependency>
     </dependencies>
+    <description>
+        日志管理,通过自定义注解AOP实现
+    </description>
 </project>

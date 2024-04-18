@@ -1,8 +1,5 @@
 package com.xin.auth.service.impl;
 
-import com.xin.auth.client.SysMenuClient;
-import com.xin.auth.client.SysRoleClient;
-import com.xin.auth.client.SysUserClient;
 import com.xin.auth.service.UserInfoService;
 import com.xin.common.constant.Constants;
 import com.xin.common.constant.RedisConstants;
@@ -13,6 +10,9 @@ import com.xin.common.redis.service.RedisService;
 import com.xin.common.result.ResponseResult;
 import com.xin.common.utils.JwtUtils;
 import com.xin.common.utils.ReflectionUtils;
+import com.xin.system.api.client.SysMenuClient;
+import com.xin.system.api.client.SysRoleClient;
+import com.xin.system.api.client.SysUserClient;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

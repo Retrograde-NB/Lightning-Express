@@ -1,7 +1,7 @@
 package com.xin.system.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.xin.system.entity.SysRoleMenu;
+import com.xin.system.domain.entity.SysRoleMenu;
 
 /**
  * @Author Retrograde-LX

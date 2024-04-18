@@ -1,7 +1,7 @@
 package com.xin.system.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.xin.system.entity.SysUser;
+import com.xin.system.domain.entity.SysUser;
 
 /**
  * @Author Retrograde-LX

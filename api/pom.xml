@@ -9,17 +9,17 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>common-module</artifactId>
+    <artifactId>api</artifactId>
     <packaging>pom</packaging>
-
-    <description>
-        Lightning-Express公共模块
-    </description>
     <modules>
-        <module>common-redis</module>
-        <module>common</module>
-        <module>common-swagger</module>
-        <module>common-log</module>
-        <module>common-security</module>
+        <module>api-system</module>
     </modules>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
+    <description>
+        远程调用接口管理
+    </description>
 </project>

@@ -3,6 +3,7 @@ package com.xin.system.controller;
 import com.xin.common.result.ResponseResult;
 import com.xin.system.service.SysRoleService;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/api/admin/role")
+@Tag(name = "sys-role-controller", description = "后台角色管理")
 public class SysRoleController {
     @Autowired
     private SysRoleService sysRoleService;

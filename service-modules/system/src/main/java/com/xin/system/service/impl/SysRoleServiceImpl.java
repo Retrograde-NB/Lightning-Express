@@ -1,7 +1,7 @@
 package com.xin.system.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.xin.system.entity.SysRole;
+import com.xin.system.domain.entity.SysRole;
 import com.xin.system.mapper.SysRoleMapper;
 import com.xin.system.service.SysRoleService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -16,6 +16,7 @@
         <module>service-modules</module>
         <module>api-gateway</module>
         <module>common-module</module>
+        <module>api</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

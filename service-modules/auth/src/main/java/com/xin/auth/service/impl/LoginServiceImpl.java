@@ -1,6 +1,5 @@
 package com.xin.auth.service.impl;
 
-import com.xin.auth.client.SysUserClient;
 import com.xin.auth.domain.dto.AdminLoginDTO;
 import com.xin.auth.service.LoginService;
 import com.xin.common.constant.Constants;
@@ -13,7 +12,7 @@ import com.xin.common.redis.service.RedisService;
 import com.xin.common.result.ResponseResult;
 import com.xin.common.utils.JwtUtils;
 import com.xin.common.utils.MD5Utils;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.xin.system.api.client.SysUserClient;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;

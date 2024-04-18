@@ -3,27 +3,36 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>service-modules</artifactId>
+        <artifactId>common-module</artifactId>
         <groupId>com.xin</groupId>
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>auth</artifactId>
+    <artifactId>common-security</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
-
-    <description>
-        auth认证授权中心
-    </description>
     <dependencies>
         <dependency>
             <groupId>com.xin</groupId>
-            <artifactId>common-security</artifactId>
+            <artifactId>common-redis</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <!-- Spring Web -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.xin</groupId>
+            <artifactId>api-system</artifactId>
             <version>1.0.0</version>
         </dependency>
     </dependencies>
+    <description>
+        自定义权限,自定义注解AOP实现
+    </description>
 </project>

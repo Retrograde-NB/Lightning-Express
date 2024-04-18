@@ -23,6 +23,14 @@ public class ResponseResult<T> implements Serializable {
      * 失败
      */
     public static final int FAIL = Constants.FAIL;
+    /**
+     * 默认msg成功的值
+     */
+    public static final String MSG_SUCCESS = "操作成功";
+    /**
+     * 默认msg失败的值
+     */
+    public static final String MSG_FAIL = "操作失败";
 
     private int code;
 
@@ -31,11 +39,11 @@ public class ResponseResult<T> implements Serializable {
     private T data;
 
     public static <T> ResponseResult<T> ok() {
-        return restResult(null, SUCCESS, null);
+        return restResult(null, SUCCESS, MSG_SUCCESS);
     }
 
     public static <T> ResponseResult<T> ok(T data) {
-        return restResult(data, SUCCESS, null);
+        return restResult(data, SUCCESS, MSG_SUCCESS);
     }
 
     public static <T> ResponseResult<T> ok(T data, String msg) {
@@ -43,7 +51,7 @@ public class ResponseResult<T> implements Serializable {
     }
 
     public static <T> ResponseResult<T> fail() {
-        return restResult(null, FAIL, null);
+        return restResult(null, FAIL, MSG_FAIL);
     }
 
     public static <T> ResponseResult<T> fail(String msg) {
@@ -51,7 +59,7 @@ public class ResponseResult<T> implements Serializable {
     }
 
     public static <T> ResponseResult<T> fail(T data) {
-        return restResult(data, FAIL, null);
+        return restResult(data, FAIL, MSG_FAIL);
     }
 
     public static <T> ResponseResult<T> fail(T data, String msg) {

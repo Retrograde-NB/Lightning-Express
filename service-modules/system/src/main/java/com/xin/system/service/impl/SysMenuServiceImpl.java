@@ -1,7 +1,7 @@
 package com.xin.system.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.xin.system.entity.SysMenu;
+import com.xin.system.domain.entity.SysMenu;
 import com.xin.system.mapper.SysMenuMapper;
 import com.xin.system.service.SysMenuService;
 import org.springframework.beans.factory.annotation.Autowired;

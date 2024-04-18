@@ -1,7 +1,7 @@
 package com.xin.system.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.xin.system.entity.SysRole;
+import com.xin.system.domain.entity.SysRole;
 
 import java.util.List;
 
