@@ -8,7 +8,7 @@ package com.xin.common.constant;
  */
 public class ServiceNameConstants {
     /**
-     * 系统模块的serviceid
+     * 系统模块的service id
      */
     public static final String SYSTEM_SERVICE = "service-system";
 }

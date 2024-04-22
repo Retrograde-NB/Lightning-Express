@@ -2,6 +2,7 @@ package com.xin.system.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.xin.system.domain.entity.SysUser;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * @Author Retrograde-LX
@@ -10,4 +11,7 @@ import com.xin.system.domain.entity.SysUser;
  * @Remark 又是程序猿秃头的一天
  */
 public interface SysUserMapper extends BaseMapper<SysUser> {
+    SysUser getUserInfoByUsername(@Param("username") String username);
+
+    SysUser getUserInfoById(@Param("id") Long id);
 }

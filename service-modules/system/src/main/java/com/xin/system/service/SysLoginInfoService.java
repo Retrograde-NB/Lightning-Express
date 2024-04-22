@@ -2,6 +2,7 @@ package com.xin.system.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.xin.common.result.ResponseResult;
+import com.xin.system.domain.dto.SysLoginInfoDTO;
 import com.xin.system.domain.entity.SysLoginInfo;
 
 /**
@@ -11,5 +12,5 @@ import com.xin.system.domain.entity.SysLoginInfo;
  * @Remark 又是程序猿秃头的一天
  */
 public interface SysLoginInfoService extends IService<SysLoginInfo> {
-    ResponseResult<Integer> add(SysLoginInfo sysLoginInfo);
+    ResponseResult<Integer> add(SysLoginInfoDTO sysLoginInfoDTO);
 }

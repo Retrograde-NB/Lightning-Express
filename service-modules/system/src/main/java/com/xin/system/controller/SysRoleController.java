@@ -1,6 +1,8 @@
 package com.xin.system.controller;
 
 import com.xin.common.result.ResponseResult;
+import com.xin.log.annotation.Log;
+import com.xin.log.enums.OperationType;
 import com.xin.system.service.SysRoleService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -27,6 +29,7 @@ public class SysRoleController {
 
     @GetMapping("/getRoleNameById/{id}")
     @ApiOperation(value = "根据用户id获取角色")
+    @Log(title = "根据用户id获取角色列表", operationType = OperationType.OTHER)
     public ResponseResult<List<String>> getRoleNameById(@PathVariable("id") String id){
         List<String> roleNameList = sysRoleService.getRoleNameById(id);
         return ResponseResult.ok(roleNameList);

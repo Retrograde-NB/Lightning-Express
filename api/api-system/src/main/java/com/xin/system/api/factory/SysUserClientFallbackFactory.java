@@ -1,6 +1,6 @@
 package com.xin.system.api.factory;
 
-import com.xin.common.domain.auth.UserInfoVo;
+import com.xin.common.domain.auth.vo.UserInfoVo;
 import com.xin.common.result.ResponseResult;
 import com.xin.system.api.client.SysUserClient;
 import org.slf4j.Logger;
@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
  * @Date 2024/03/08 下午 2:32
  * @Version 1.0
  * @Remark 又是程序猿秃头的一天
+ * SysUserClient执行失败的兜底实现类
  */
 @Component
 public class SysUserClientFallbackFactory implements FallbackFactory<SysUserClient> {

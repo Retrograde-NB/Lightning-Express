@@ -26,6 +26,11 @@
             <artifactId>common-redis</artifactId>
             <version>1.0.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.xin</groupId>
+            <artifactId>api-system</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
     <description>
         日志管理,通过自定义注解AOP实现

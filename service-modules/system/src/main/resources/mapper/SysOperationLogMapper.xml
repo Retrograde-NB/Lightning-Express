@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xin.system.mapper.SysOperationLogMapper">
+
+    <insert id="add" parameterType="com.xin.system.domain.entity.SysOperationLog" useGeneratedKeys="true"
+            keyProperty="id">
+        insert into sys_operation_log(
+            <if test="id != null and id != 0">id,</if>
+            <if test="title != null and title != ''">title,</if>
+            <if test="businessType != null and businessType != ''">business_type,</if>
+            <if test="method != null and method != ''">method,</if>
+            <if test="requestMethod != null and requestMethod != ''">request_method,</if>
+            <if test="operatorType != null and operatorType != ''">operator_type,</if>
+            <if test="operationName != null and operationName != ''">operation_name,</if>
+            <if test="deptName != null and deptName != ''">dept_name,</if>
+            <if test="operationUrl != null and operationUrl != ''">operation_url,</if>
+            <if test="operationIp != null and operationIp != ''">operation_ip,</if>
+            <if test="operationLocation != null and operationLocation != ''">operation_location,</if>
+            <if test="operationParam != null and operationParam != ''">operation_param,</if>
+            <if test="jsonResult != null and jsonResult != ''">json_result,</if>
+            <if test="status != null and status != ''">status,</if>
+            <if test="costTime != null and costTime != ''">cost_time,</if>
+            operation_time
+        ) values (
+            <if test="id != null and id != 0">#{id},</if>
+            <if test="title != null and title != ''">#{title},</if>
+            <if test="businessType != null and businessType != ''">#{businessType},</if>
+            <if test="method != null and method != ''">#{method},</if>
+            <if test="requestMethod != null and requestMethod != ''">#{requestMethod},</if>
+            <if test="operatorType != null and operatorType != ''">#{operatorType},</if>
+            <if test="operationName != null and operationName != ''">#{operationName},</if>
+            <if test="deptName != null and deptName != ''">#{deptName},</if>
+            <if test="operationUrl != null and operationUrl != ''">#{operationUrl},</if>
+            <if test="operationIp != null and operationIp != ''">#{operationIp},</if>
+            <if test="operationLocation != null and operationLocation != ''">#{operationLocation},</if>
+            <if test="operationParam != null and operationParam != ''">#{operationParam},</if>
+            <if test="jsonResult != null and jsonResult != ''">#{jsonResult},</if>
+            <if test="status != null and status != ''">#{status},</if>
+            <if test="costTime != null and costTime != ''">#{costTime},</if>
+            sysdate()
+        )
+    </insert>
+</mapper>

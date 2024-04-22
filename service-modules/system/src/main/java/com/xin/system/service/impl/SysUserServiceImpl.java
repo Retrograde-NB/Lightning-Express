@@ -5,7 +5,10 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xin.system.domain.entity.SysUser;
 import com.xin.system.mapper.SysUserMapper;
 import com.xin.system.service.SysUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 /**
  * @Author Retrograde-LX
@@ -15,15 +18,17 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements SysUserService {
+
+    @Resource
+    private SysUserMapper sysUserMapper;
+
     @Override
     public SysUser getUserInfoByUsername(String username) {
-        QueryWrapper<SysUser> wrapper = new QueryWrapper<>();
-        wrapper.eq("user_name", username);
-        return this.getOne(wrapper);
+        return sysUserMapper.getUserInfoByUsername(username);
     }
 
     @Override
     public SysUser getUserInfoById(Long id) {
-        return this.getById(id);
+        return sysUserMapper.getUserInfoById(id);
     }
 }

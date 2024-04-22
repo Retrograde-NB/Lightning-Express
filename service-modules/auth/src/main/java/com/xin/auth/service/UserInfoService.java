@@ -1,6 +1,6 @@
 package com.xin.auth.service;
 
-import com.xin.common.domain.auth.AdminUserInfoVo;
+import com.xin.common.domain.auth.vo.AdminUserInfoVo;
 
 /**
  * @Author Retrograde-LX

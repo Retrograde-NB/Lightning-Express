@@ -1,13 +1,9 @@
 package com.xin.auth.controller;
 
 import com.xin.auth.service.UserInfoService;
-import com.xin.common.domain.auth.AdminUserInfoVo;
+import com.xin.common.domain.auth.vo.AdminUserInfoVo;
 import com.xin.common.result.ResponseResult;
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.v3.oas.annotations.ExternalDocumentation;
-import io.swagger.v3.oas.annotations.OpenAPIDefinition;
-import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

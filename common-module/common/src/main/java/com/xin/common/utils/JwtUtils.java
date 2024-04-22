@@ -7,6 +7,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import jdk.nashorn.internal.parser.Token;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.util.StringUtils;
@@ -28,7 +29,7 @@ public class JwtUtils {
      * @param id id
      * @return token
      */
-    public static String getJwtToken(Long id){
+    public static String getJwtToken(Long id, String userName){
         return Jwts.builder()
                 .setHeaderParam("typ", "JWT")
                 .setHeaderParam("alg", "HS256")
@@ -36,6 +37,7 @@ public class JwtUtils {
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRE))
                 .claim("id", id)
+                .claim("userName", userName)
                 .signWith(SignatureAlgorithm.HS256, APP_SECRET)
                 .compact();
     }
@@ -99,6 +101,18 @@ public class JwtUtils {
             throw new XinException(Constants.FAIL, "凭证已过期请从新认证");
         }
         return JwtUtils.getIdByJwtToken(token);
+    }
+
+    public static String getUserName(String token){
+        if (StrUtil.isEmpty(token)) {
+            throw new XinException(Constants.FAIL, "获取失败,无token");
+        }
+        if (!JwtUtils.checkToken(token)) {
+            throw new XinException(Constants.FAIL, "凭证已过期请从新认证");
+        }
+        Jws<Claims> claimsJws = Jwts.parser().setSigningKey(APP_SECRET).parseClaimsJws(token);
+        Claims claims = claimsJws.getBody();
+        return claims.get("userName").toString();
     }
 
     /**

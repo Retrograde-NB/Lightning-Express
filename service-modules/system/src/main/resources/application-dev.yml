@@ -20,6 +20,8 @@ spring:
     pathmatch:
       #这里配置的这个参数是为了解决spring boot和swagger版本不兼容的问题
       matching-strategy: ant_path_matcher
+  redis:
+    host: 192.168.109.4
 mybatis-plus:
   mapper-locations: classpath:mapper/*.xml
   configuration:

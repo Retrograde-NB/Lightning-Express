@@ -1,6 +1,8 @@
 package com.xin.system.controller;
 
 import com.xin.common.result.ResponseResult;
+import com.xin.log.annotation.Log;
+import com.xin.log.enums.OperationType;
 import com.xin.system.service.SysMenuService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -30,6 +32,7 @@ public class SysMenuController {
     }
     @GetMapping("/getPermissionById/{id}")
     @ApiOperation(value = "根据用户id获取权限")
+    @Log(title = "根据用户id获取权限列表", operationType = OperationType.OTHER)
     public ResponseResult<List<String>> getPermissionById(@PathVariable("id") Long id) {
         List<String> permissionList = sysMenuService.getPermissionById(id);
         return ResponseResult.ok(permissionList);
@@ -37,6 +40,7 @@ public class SysMenuController {
 
     @GetMapping("/getRoutesById/{id}")
     @ApiOperation(value = "根据id获取路由信息")
+    @Log(title = "根据用户id获取路由信息列表", operationType = OperationType.OTHER)
     public ResponseResult<List<String>> getRoutesById(@PathVariable("id") Long id){
         List<String> routesList = sysMenuService.getRoutesById(id);
         return ResponseResult.ok(routesList);

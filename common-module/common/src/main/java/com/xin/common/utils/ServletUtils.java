@@ -139,4 +139,44 @@ public class ServletUtils {
         }
     }
 
+    public static String getOS(){
+        HttpServletRequest request = ServletUtils.getRequest();
+        // 获取User-Agent头信息
+        String userAgent = request.getHeader("User-Agent");
+        // 解析操作系统信息
+        String os = "Unknown OS";
+        if (userAgent.contains("Windows")) {
+            os = "Windows";
+        } else if (userAgent.contains("Android")) {
+            os = "Android";
+        } else if (userAgent.contains("iPhone") || userAgent.contains("iPad")) {
+            os = "iOS";
+        } else if (userAgent.contains("Mac")) {
+            os = "Mac OS";
+        } else if (userAgent.contains("Linux")) {
+            os = "Linux";
+        }
+        return os;
+    }
+
+    public static String getBrowser(){
+        HttpServletRequest request = ServletUtils.getRequest();
+        // 获取User-Agent头信息
+        String userAgent = request.getHeader("User-Agent");
+        // 解析浏览器信息
+        String browser = "Unknown Browser";
+        if (userAgent.contains("Mozilla/5.0") && userAgent.contains("Chrome")) {
+            browser = "Google Chrome";
+        } else if (userAgent.contains("Mozilla/5.0") && userAgent.contains("Firefox")) {
+            browser = "Mozilla Firefox";
+        } else if (userAgent.contains("Mozilla/5.0") && userAgent.contains("Safari")) {
+            browser = "Safari";
+        } else if (userAgent.contains("Opera")) {
+            browser = "Opera";
+        } else if (userAgent.contains("MSIE") || userAgent.contains("Trident/7")) {
+            browser = "Internet Explorer";
+        }
+        return browser;
+    }
+
 }

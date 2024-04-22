@@ -1,5 +1,7 @@
 package com.xin.system.domain.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.Length;
 
@@ -20,6 +22,7 @@ public class SysLoginInfo implements Serializable {
      */
     @NotNull(message="[主键ID]不能为空")
     @ApiModelProperty("主键ID")
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
     /**
      * 用户账号

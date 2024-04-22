@@ -1,10 +1,15 @@
 package com.xin.auth.service.impl;
 
+import com.xin.auth.service.LogService;
 import com.xin.auth.service.LogoutService;
+import com.xin.auth.utils.PackageUtils;
+import com.xin.common.constant.Constants;
 import com.xin.common.constant.RedisConstants;
 import com.xin.common.redis.service.RedisService;
 import com.xin.common.result.ResponseResult;
+import com.xin.common.utils.IpUtils;
 import com.xin.common.utils.JwtUtils;
+import com.xin.common.utils.ServletUtils;
 import org.springframework.stereotype.Service;
 
 
@@ -18,8 +23,11 @@ import org.springframework.stereotype.Service;
 public class LogoutServiceImpl implements LogoutService {
     private final RedisService redisService;
 
-    public LogoutServiceImpl(RedisService redisService) {
+    private final LogService logService;
+
+    public LogoutServiceImpl(RedisService redisService, LogService logService) {
         this.redisService = redisService;
+        this.logService = logService;
     }
 
     @Override
@@ -29,6 +37,7 @@ public class LogoutServiceImpl implements LogoutService {
         redisService.deleteObject(RedisConstants.ROLE_KEY + id);
         redisService.deleteObject(RedisConstants.PERMISSION_KEY + id);
         redisService.deleteObject(RedisConstants.ADMIN_TOKEN_KEY + id);
+        logService.recordLoginInfoLog(PackageUtils.getSysLoginInfoDTO(JwtUtils.getUserName(JwtUtils.getToken()), "退出登录成功！", Constants.LOGOUT));
         return ResponseResult.ok("退出登录成功！");
     }
 }

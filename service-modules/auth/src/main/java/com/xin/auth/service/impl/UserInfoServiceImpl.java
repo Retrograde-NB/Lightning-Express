@@ -3,8 +3,8 @@ package com.xin.auth.service.impl;
 import com.xin.auth.service.UserInfoService;
 import com.xin.common.constant.Constants;
 import com.xin.common.constant.RedisConstants;
-import com.xin.common.domain.auth.AdminUserInfoVo;
-import com.xin.common.domain.auth.UserInfoVo;
+import com.xin.common.domain.auth.vo.AdminUserInfoVo;
+import com.xin.common.domain.auth.vo.UserInfoVo;
 import com.xin.common.exception.XinException;
 import com.xin.common.redis.service.RedisService;
 import com.xin.common.result.ResponseResult;
@@ -16,6 +16,7 @@ import com.xin.system.api.client.SysUserClient;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @Author Retrograde-LX

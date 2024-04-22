@@ -2,6 +2,7 @@ package com.xin.gateway.filter;
 
 import com.xin.common.constant.RedisConstants;
 import com.xin.common.redis.service.RedisService;
+import com.xin.common.utils.CurrentThreadTokenUtils;
 import com.xin.common.utils.JwtUtils;
 import com.xin.common.utils.StringUtils;
 import com.xin.common.utils.WebResponseUtils;
@@ -24,7 +25,7 @@ import java.util.List;
  * @Date 2024/04/14 下午 2:11
  * @Version 1.0
  * @Remark 又是程序猿秃头的一天
- * token过滤器  GlobalFilter不需要配置
+ * token全局过滤器  GlobalFilter不需要配置
  */
 @Component
 public class TokenFilter implements GlobalFilter, Ordered {

@@ -15,6 +15,7 @@ import java.util.List;
  * @Date 2024/03/31 下午 1:55
  * @Version 1.0
  * @Remark 又是程序猿秃头的一天
+ * 远程调用service-system模块的获取菜单权限列表和路由列表功能
  */
 //@Component(value = "sysMenuClient")
 @FeignClient(contextId = "sysMenuClient", value = ServiceNameConstants.SYSTEM_SERVICE, fallbackFactory = SysMenuClientFallbackFactory.class)

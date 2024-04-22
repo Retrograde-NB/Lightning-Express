@@ -1,7 +1,9 @@
 package com.xin.system.controller;
 
-import com.xin.common.domain.auth.UserInfoVo;
+import com.xin.common.domain.auth.vo.UserInfoVo;
 import com.xin.common.result.ResponseResult;
+import com.xin.log.annotation.Log;
+import com.xin.log.enums.OperationType;
 import com.xin.system.domain.entity.SysUser;
 import com.xin.system.service.SysUserService;
 import io.swagger.annotations.ApiOperation;
@@ -32,10 +34,11 @@ public class SysUserController {
 
     @GetMapping("/getUserInfoByUsername/{username}")
     @ApiOperation(value = "根据用户名获取信息")
+    @Log(title = "根据用户名获取用户信息", operationType = OperationType.OTHER)
     public ResponseResult<UserInfoVo> getUserInfoByUsername(@PathVariable("username") String username){
         SysUser sysUser = sysUserService.getUserInfoByUsername(username);
         if (Objects.isNull(sysUser)) {
-            return ResponseResult.fail("用户名或密码错误");
+            return ResponseResult.fail("用户不存在");
         }
         UserInfoVo userInfoVo = new UserInfoVo();
         BeanUtils.copyProperties(sysUser, userInfoVo);
@@ -43,8 +46,8 @@ public class SysUserController {
     }
     @GetMapping("/getUserInfoById/{id}")
     @ApiOperation(value = "根据id获取信息")
+    @Log(title = "根据id获取后台用户信息", operationType = OperationType.OTHER)
     public ResponseResult<UserInfoVo> getUserInfoById(@PathVariable("id") Long id){
-        // TODO 判断token
         SysUser sysUser = sysUserService.getUserInfoById(id);
         if (Objects.isNull(sysUser)) {
             return ResponseResult.fail("获取失败");

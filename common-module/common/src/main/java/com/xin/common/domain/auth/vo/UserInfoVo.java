@@ -1,4 +1,4 @@
-package com.xin.common.domain.auth;
+package com.xin.common.domain.auth.vo;
 
 /**
  * @Author Retrograde-LX

@@ -14,6 +14,7 @@ import java.util.List;
  * @Date 2024/03/31 下午 1:56
  * @Version 1.0
  * @Remark 又是程序猿秃头的一天
+ * SysMenuClient执行失败的兜底实现类
  */
 @Component
 public class SysMenuClientFallbackFactory implements FallbackFactory<SysMenuClient> {

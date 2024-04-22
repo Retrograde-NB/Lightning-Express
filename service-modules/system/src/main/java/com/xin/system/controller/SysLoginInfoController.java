@@ -1,6 +1,7 @@
 package com.xin.system.controller;
 
 import com.xin.common.result.ResponseResult;
+import com.xin.system.domain.dto.SysLoginInfoDTO;
 import com.xin.system.domain.entity.SysLoginInfo;
 import com.xin.system.service.SysLoginInfoService;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -24,9 +25,13 @@ public class SysLoginInfoController {
     public SysLoginInfoController(SysLoginInfoService sysLoginInfoService) {
         this.sysLoginInfoService = sysLoginInfoService;
     }
-
+    /**
+     * 添加登录信息日志
+     * @param sysLoginInfoDTO 日志信息
+     * @return 返回添加行数
+     */
     @PostMapping("/add")
-    public ResponseResult<Integer> add(@RequestBody SysLoginInfo sysLoginInfo){
-        return sysLoginInfoService.add(sysLoginInfo);
+    public ResponseResult<Integer> add(@RequestBody SysLoginInfoDTO sysLoginInfoDTO){
+        return sysLoginInfoService.add(sysLoginInfoDTO);
     }
 }

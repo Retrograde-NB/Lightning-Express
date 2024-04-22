@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xin.system.mapper.SysLoginInfoMapper">
+
+    <insert id="add" parameterType="com.xin.system.domain.entity.SysLoginInfo" useGeneratedKeys="true" keyProperty="id">
+        insert into sys_login_info(
+            <if test="id != null and id != 0">id,</if>
+            <if test="userName != null and userName != ''">user_name,</if>
+            <if test="ipAddress != null and ipAddress != ''">ip_address,</if>
+            <if test="loginLocation != null and loginLocation != ''">login_location,</if>
+            <if test="browser != null and browser != ''">browser,</if>
+            <if test="os != null and os != ''">os,</if>
+            <if test="status != null and status != ''">status,</if>
+            <if test="msg != null and msg != ''">msg,</if>
+            login_time
+        ) values (
+            <if test="id != null and id != 0">#{id},</if>
+            <if test="userName != null and userName != ''">#{userName},</if>
+            <if test="ipAddress != null and ipAddress != ''">#{ipAddress},</if>
+            <if test="loginLocation != null and loginLocation != ''">#{loginLocation},</if>
+            <if test="browser != null and browser != ''">#{browser},</if>
+            <if test="os != null and os != ''">#{os},</if>
+            <if test="status != null and status != ''">#{status},</if>
+            <if test="msg != null and msg != ''">#{msg},</if>
+            sysdate()
+        )
+    </insert>
+</mapper>

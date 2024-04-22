@@ -1,6 +1,7 @@
 package com.xin.system.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.xin.system.domain.dto.SysLoginInfoDTO;
 import com.xin.system.domain.entity.SysLoginInfo;
 
 /**
@@ -10,4 +11,5 @@ import com.xin.system.domain.entity.SysLoginInfo;
  * @Remark 又是程序猿秃头的一天
  */
 public interface SysLoginInfoMapper extends BaseMapper<SysLoginInfo> {
+    int add(SysLoginInfo sysLoginInfo);
 }
