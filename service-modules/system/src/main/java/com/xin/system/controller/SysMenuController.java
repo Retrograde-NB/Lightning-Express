@@ -34,16 +34,14 @@ public class SysMenuController {
     @ApiOperation(value = "根据用户id获取权限")
     @Log(title = "根据用户id获取权限列表", operationType = OperationType.OTHER)
     public ResponseResult<List<String>> getPermissionById(@PathVariable("id") Long id) {
-        List<String> permissionList = sysMenuService.getPermissionById(id);
-        return ResponseResult.ok(permissionList);
+        return ResponseResult.ok(sysMenuService.getPermissionById(id));
     }
 
     @GetMapping("/getRoutesById/{id}")
     @ApiOperation(value = "根据id获取路由信息")
     @Log(title = "根据用户id获取路由信息列表", operationType = OperationType.OTHER)
     public ResponseResult<List<String>> getRoutesById(@PathVariable("id") Long id){
-        List<String> routesList = sysMenuService.getRoutesById(id);
-        return ResponseResult.ok(routesList);
+        return ResponseResult.ok(sysMenuService.getRoutesById(id));
     }
 
 }

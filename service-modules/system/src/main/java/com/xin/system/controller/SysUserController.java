@@ -36,26 +36,12 @@ public class SysUserController {
     @ApiOperation(value = "根据用户名获取信息")
     @Log(title = "根据用户名获取用户信息", operationType = OperationType.OTHER)
     public ResponseResult<UserInfoVo> getUserInfoByUsername(@PathVariable("username") String username){
-        SysUser sysUser = sysUserService.getUserInfoByUsername(username);
-        if (Objects.isNull(sysUser)) {
-            return ResponseResult.fail("用户不存在");
-        }
-        UserInfoVo userInfoVo = new UserInfoVo();
-        BeanUtils.copyProperties(sysUser, userInfoVo);
-        return ResponseResult.ok(userInfoVo);
+        return sysUserService.getUserInfoByUsername(username);
     }
     @GetMapping("/getUserInfoById/{id}")
     @ApiOperation(value = "根据id获取信息")
     @Log(title = "根据id获取后台用户信息", operationType = OperationType.OTHER)
     public ResponseResult<UserInfoVo> getUserInfoById(@PathVariable("id") Long id){
-        SysUser sysUser = sysUserService.getUserInfoById(id);
-        if (Objects.isNull(sysUser)) {
-            return ResponseResult.fail("获取失败");
-        }
-        UserInfoVo userInfoVo = new UserInfoVo();
-        BeanUtils.copyProperties(sysUser, userInfoVo);
-        return ResponseResult.ok(userInfoVo);
+        return sysUserService.getUserInfoById(id);
     }
-
-
 }

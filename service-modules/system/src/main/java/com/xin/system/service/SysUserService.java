@@ -1,6 +1,8 @@
 package com.xin.system.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.xin.common.domain.auth.vo.UserInfoVo;
+import com.xin.common.result.ResponseResult;
 import com.xin.system.domain.entity.SysUser;
 
 /**
@@ -10,7 +12,7 @@ import com.xin.system.domain.entity.SysUser;
  * @Remark 又是程序猿秃头的一天
  */
 public interface SysUserService extends IService<SysUser> {
-    SysUser getUserInfoByUsername(String username);
+    ResponseResult<UserInfoVo> getUserInfoByUsername(String username);
 
-    SysUser getUserInfoById(Long id);
+    ResponseResult<UserInfoVo> getUserInfoById(Long id);
 }

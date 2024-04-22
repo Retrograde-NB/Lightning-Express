@@ -31,7 +31,6 @@ public class SysRoleController {
     @ApiOperation(value = "根据用户id获取角色")
     @Log(title = "根据用户id获取角色列表", operationType = OperationType.OTHER)
     public ResponseResult<List<String>> getRoleNameById(@PathVariable("id") String id){
-        List<String> roleNameList = sysRoleService.getRoleNameById(id);
-        return ResponseResult.ok(roleNameList);
+        return ResponseResult.ok(sysRoleService.getRoleNameById(id));
     }
 }
