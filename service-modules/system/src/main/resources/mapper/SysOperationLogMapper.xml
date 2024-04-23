@@ -40,4 +40,8 @@
             sysdate()
         )
     </insert>
+    <select id="page" resultType="com.xin.system.domain.entity.SysOperationLog">
+        select id, title, business_type, method, request_method, operator_type, operation_name, dept_name, operation_url, operation_ip, operation_location, operation_param, json_result, status, error_msg, operation_time, cost_time
+        from sys_operation_log
+    </select>
 </mapper>

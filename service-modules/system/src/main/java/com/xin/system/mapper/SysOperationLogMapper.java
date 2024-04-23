@@ -3,6 +3,8 @@ package com.xin.system.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.xin.system.domain.entity.SysOperationLog;
 
+import java.util.List;
+
 /**
  * @Author Retrograde-LX
  * @Date 2024/04/19 下午 9:09
@@ -11,4 +13,6 @@ import com.xin.system.domain.entity.SysOperationLog;
  */
 public interface SysOperationLogMapper extends BaseMapper<SysOperationLog> {
     int add(SysOperationLog sysOperationLog);
+
+    List<SysOperationLog> page();
 }

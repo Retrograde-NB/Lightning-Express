@@ -1,13 +1,11 @@
 package com.xin.system.controller;
 
 import com.xin.common.result.ResponseResult;
+import com.xin.common.utils.PageUtils;
 import com.xin.system.domain.dto.SysOperationLogDTO;
 import com.xin.system.service.SysOperationLogService;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @Author Retrograde-LX
@@ -32,5 +30,11 @@ public class SysOperationLogController {
     @PostMapping("/add")
     public ResponseResult<Integer> add(@RequestBody SysOperationLogDTO sysOperationLogDTO){
         return sysOperationLogService.add(sysOperationLogDTO);
+    }
+
+    @GetMapping("/page")
+    public ResponseResult page() {
+        PageUtils.startPage();
+        return sysOperationLogService.page();
     }
 }

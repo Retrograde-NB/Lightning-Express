@@ -12,6 +12,7 @@ import org.springframework.web.util.pattern.PathPatternParser;
  * @Date 2024/03/31 下午 12:52
  * @Version 1.0
  * @Remark 又是程序猿秃头的一天
+ * 跨域的配置
  */
 @Configuration
 public class CorsConfig {

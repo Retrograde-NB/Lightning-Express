@@ -59,7 +59,7 @@ public class SysUser implements Serializable {
     @Size(max= 32,message="编码长度不能超过32")
     @ApiModelProperty("手机号")
     @Length(max= 32,message="编码长度不能超过32")
-    private String phonenumber;
+    private String phoneNumber;
     /**
      * 头像
      */
@@ -97,13 +97,13 @@ public class SysUser implements Serializable {
     @ApiModelProperty("删除标志（0代表未删除，1代表已删除）")
     private Integer delFlag;
 
-    public SysUser(Long id, String userName, String nickName, String password, String status, String phonenumber, String avatar, String createBy, Date createTime, String updateBy, Date updateTime, Integer delFlag) {
+    public SysUser(Long id, String userName, String nickName, String password, String status, String phoneNumber, String avatar, String createBy, Date createTime, String updateBy, Date updateTime, Integer delFlag) {
         this.id = id;
         this.userName = userName;
         this.nickName = nickName;
         this.password = password;
         this.status = status;
-        this.phonenumber = phonenumber;
+        this.phoneNumber = phoneNumber;
         this.avatar = avatar;
         this.createBy = createBy;
         this.createTime = createTime;
@@ -123,7 +123,7 @@ public class SysUser implements Serializable {
                 ", nickName='" + nickName + '\'' +
                 ", password='" + password + '\'' +
                 ", status='" + status + '\'' +
-                ", phonenumber='" + phonenumber + '\'' +
+                ", phonenumber='" + phoneNumber + '\'' +
                 ", avatar='" + avatar + '\'' +
                 ", createBy='" + createBy + '\'' +
                 ", createTime=" + createTime +
@@ -171,8 +171,8 @@ public class SysUser implements Serializable {
     /**
      * 手机号
      */
-    public void setPhonenumber(String phonenumber){
-        this.phonenumber = phonenumber;
+    public void setPhoneNumber(String phoneNumber){
+        this.phoneNumber = phoneNumber;
     }
 
     /**
@@ -256,8 +256,8 @@ public class SysUser implements Serializable {
     /**
      * 手机号
      */
-    public String getPhonenumber(){
-        return this.phonenumber;
+    public String getPhoneNumber(){
+        return this.phoneNumber;
     }
 
     /**

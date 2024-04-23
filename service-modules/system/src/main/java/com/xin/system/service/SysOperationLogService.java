@@ -13,4 +13,5 @@ import com.xin.system.domain.entity.SysOperationLog;
  */
 public interface SysOperationLogService extends IService<SysOperationLog> {
     ResponseResult<Integer> add(SysOperationLogDTO sysOperationLogDTO);
+    ResponseResult page();
 }

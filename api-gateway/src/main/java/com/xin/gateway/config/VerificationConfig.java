@@ -13,6 +13,7 @@ import java.util.Properties;
  * @Date 2024/04/06 下午 1:44
  * @Version 1.0
  * @Remark 又是程序猿秃头的一天
+ * 验证码参数配置
  */
 @Component
 public class VerificationConfig {

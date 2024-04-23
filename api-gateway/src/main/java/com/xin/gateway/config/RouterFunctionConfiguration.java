@@ -14,6 +14,7 @@ import org.springframework.web.reactive.function.server.ServerResponse;
  * @Date 2024/04/06 下午 1:53
  * @Version 1.0
  * @Remark 又是程序猿秃头的一天
+ * 配置验证码的请求地址 /api/code
  */
 @Configuration
 public class RouterFunctionConfiguration {

@@ -1,8 +1,11 @@
 package com.xin.system.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.xin.system.domain.dto.SysUserPageDTO;
 import com.xin.system.domain.entity.SysUser;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * @Author Retrograde-LX
@@ -14,4 +17,6 @@ public interface SysUserMapper extends BaseMapper<SysUser> {
     SysUser getUserInfoByUsername(@Param("username") String username);
 
     SysUser getUserInfoById(@Param("id") Long id);
+
+    List<SysUser> page(SysUserPageDTO sysUserPageDTO);
 }

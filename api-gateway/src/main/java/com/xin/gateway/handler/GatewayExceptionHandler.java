@@ -16,6 +16,7 @@ import reactor.core.publisher.Mono;
  * @Date 2024/03/31 下午 1:02
  * @Version 1.0
  * @Remark 又是程序猿秃头的一天
+ * 网关异常处理器
  */
 @Order(-1)
 @Configuration

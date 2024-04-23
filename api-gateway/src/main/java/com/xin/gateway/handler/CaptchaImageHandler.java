@@ -25,6 +25,7 @@ import java.util.Map;
  * @Date 2024/04/06 下午 1:44
  * @Version 1.0
  * @Remark 又是程序猿秃头的一天
+ * 生成验证码图片的处理器
  */
 @Component
 public class CaptchaImageHandler implements HandlerFunction<ServerResponse> {

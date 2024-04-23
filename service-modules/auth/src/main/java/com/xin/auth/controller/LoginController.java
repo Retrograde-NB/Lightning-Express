@@ -3,7 +3,6 @@ package com.xin.auth.controller;
 import com.xin.auth.domain.dto.AdminLoginDTO;
 import com.xin.auth.service.LoginService;
 import com.xin.common.result.ResponseResult;
-import com.xin.common.utils.CurrentThreadTokenUtils;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;

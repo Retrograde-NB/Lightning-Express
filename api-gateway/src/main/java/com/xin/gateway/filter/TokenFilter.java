@@ -2,7 +2,6 @@ package com.xin.gateway.filter;
 
 import com.xin.common.constant.RedisConstants;
 import com.xin.common.redis.service.RedisService;
-import com.xin.common.utils.CurrentThreadTokenUtils;
 import com.xin.common.utils.JwtUtils;
 import com.xin.common.utils.StringUtils;
 import com.xin.common.utils.WebResponseUtils;

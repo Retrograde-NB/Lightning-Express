@@ -1,6 +1,7 @@
 package com.xin.system.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.github.pagehelper.Page;
 import com.xin.common.result.ResponseResult;
 import com.xin.common.utils.ReflectionUtils;
 import com.xin.system.domain.dto.SysOperationLogDTO;
@@ -11,6 +12,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @Author Retrograde-LX
@@ -28,5 +30,12 @@ public class SysOperationLogServiceImpl extends ServiceImpl<SysOperationLogMappe
         BeanUtils.copyProperties(sysOperationLogDTO, sysOperationLog);
         int result = sysOperationLogMapper.add(sysOperationLog);
         return result > 0 ? ResponseResult.ok(result) : ResponseResult.fail();
+    }
+
+    @Override
+    public ResponseResult page() {
+        List<SysOperationLog> sysOperationLogList = sysOperationLogMapper.page();
+        System.out.println(sysOperationLogList);
+        return null;
     }
 }

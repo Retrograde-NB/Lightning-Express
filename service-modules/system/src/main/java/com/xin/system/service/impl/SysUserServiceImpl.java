@@ -2,9 +2,15 @@ package com.xin.system.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageInfo;
 import com.xin.common.domain.auth.vo.UserInfoVo;
 import com.xin.common.result.ResponseResult;
+import com.xin.common.utils.ReflectionUtils;
+import com.xin.system.domain.dto.SysUserPageDTO;
 import com.xin.system.domain.entity.SysUser;
+import com.xin.system.domain.vo.SysUserPageVO;
+import com.xin.system.domain.vo.SysUserVO;
 import com.xin.system.mapper.SysUserMapper;
 import com.xin.system.service.SysUserService;
 import org.springframework.beans.BeanUtils;
@@ -12,7 +18,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * @Author Retrograde-LX
@@ -46,5 +54,21 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         UserInfoVo userInfoVo = new UserInfoVo();
         BeanUtils.copyProperties(sysUser, userInfoVo);
         return ResponseResult.ok(userInfoVo);
+    }
+
+    @Override
+    public ResponseResult<SysUserPageVO> page(SysUserPageDTO sysUserPageDTO) {
+        List<SysUser> sysUserList = sysUserMapper.page(sysUserPageDTO);
+        PageInfo<SysUser> sysUserPageInfo = new PageInfo<>(sysUserList);
+        List<SysUserVO> sysUserVOList = sysUserList.stream().map(sysUser -> {
+            SysUserVO sysUserVO = ReflectionUtils.newInstance(SysUserVO.class);
+            BeanUtils.copyProperties(sysUser, sysUserVO);
+            return sysUserVO;
+        }).collect(Collectors.toList());
+        // 封装数据
+        SysUserPageVO sysUserPageVO = ReflectionUtils.newInstance(SysUserPageVO.class);
+        sysUserPageVO.setTotal(sysUserPageInfo.getTotal());
+        sysUserPageVO.setSysUserVOList(sysUserVOList);
+        return ResponseResult.ok(sysUserPageVO);
     }
 }

@@ -1,7 +1,6 @@
 package com.xin.log.aspect;
 
 import com.alibaba.fastjson2.JSON;
-import com.sun.xml.internal.bind.v2.TODO;
 import com.xin.common.domain.system.dto.SysOperationLogDTO;
 import com.xin.common.redis.service.RedisService;
 import com.xin.common.utils.*;
@@ -18,8 +17,6 @@ import org.springframework.core.NamedThreadLocal;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;

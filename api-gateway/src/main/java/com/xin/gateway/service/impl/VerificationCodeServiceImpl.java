@@ -31,6 +31,11 @@ public class VerificationCodeServiceImpl implements VerificationCodeService {
         this.redisService = redisService;
     }
 
+    /**
+     * 生成验证码图片
+     *
+     * @return 验证码参数
+     */
     @Override
     public Map<String, Object> createVerificationCode() {
         Map<String, Object> map = new HashMap<>();
@@ -46,8 +51,14 @@ public class VerificationCodeServiceImpl implements VerificationCodeService {
         return map;
     }
 
+    /**
+     * 校验验证码
+     *
+     * @param code 验证码
+     * @param uuid 唯一标识
+     */
     @Override
-    public void checkVerificationCode(String code, String uuid) throws XinException{
+    public void checkVerificationCode(String code, String uuid) throws XinException {
         if (!StringUtils.hasText(code)) {
             throw new XinException("验证码不能为空", ReflectionUtils.newInstance(IllegalStateException.class));
         }
