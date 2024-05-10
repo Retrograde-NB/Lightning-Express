@@ -1,6 +1,11 @@
 package com.xin.system.domain.vo;
 
+import io.swagger.annotations.ApiModelProperty;
+import org.hibernate.validator.constraints.Length;
+
+import javax.validation.constraints.Size;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @Author Retrograde-LX
@@ -16,6 +21,10 @@ public class SysUserVO {
     private String phoneNumber;
     private Date createTime;
 
+    private String avatar;
+
+    private List<String> roleList;
+
     @Override
     public String toString() {
         return "SysUserVO{" +
@@ -25,6 +34,8 @@ public class SysUserVO {
                 ", status='" + status + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", createTime=" + createTime +
+                ", avatar='" + avatar + '\'' +
+                ", roleList=" + roleList +
                 '}';
     }
 
@@ -74,5 +85,21 @@ public class SysUserVO {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public List<String> getRoleList() {
+        return roleList;
+    }
+
+    public void setRoleList(List<String> roleList) {
+        this.roleList = roleList;
     }
 }

@@ -3,7 +3,9 @@ package com.xin.system.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.xin.common.result.ResponseResult;
 import com.xin.system.domain.dto.SysOperationLogDTO;
+import com.xin.system.domain.dto.SysOperationLogPageDTO;
 import com.xin.system.domain.entity.SysOperationLog;
+import com.xin.system.domain.vo.SysOperationLogPageVO;
 
 /**
  * @Author Retrograde-LX
@@ -13,5 +15,5 @@ import com.xin.system.domain.entity.SysOperationLog;
  */
 public interface SysOperationLogService extends IService<SysOperationLog> {
     ResponseResult<Integer> add(SysOperationLogDTO sysOperationLogDTO);
-    ResponseResult page();
+    ResponseResult<SysOperationLogPageVO> page(SysOperationLogPageDTO sysOperationLogPageDTO);
 }

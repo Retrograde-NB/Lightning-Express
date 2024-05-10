@@ -23,11 +23,15 @@ public class RedisConstants {
      */
     public static final String ROUTES_KEY = "routes:";
     /**
-     * token
+     * token 用户token
      */
     public static final String ADMIN_TOKEN_KEY = "admin-token:";
     /**
      * 验证码
      */
     public static final String VERIFICATION_CODE_KEY = "verification-code:";
+    /**
+     * 当前用户存储token
+     */
+    public static final String TOKEN = "token";
 }

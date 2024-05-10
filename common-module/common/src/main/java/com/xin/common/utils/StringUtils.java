@@ -559,4 +559,16 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils{
         }
         return sb.toString();
     }
+
+    /**
+     * 手机号数据脱敏（暂时用普通方法，后续改为AOP实现）
+     * @param phoneNumber 手机号
+     * @return 脱敏后的数据
+     */
+    public static String desensitizePhoneNumber(String phoneNumber) {
+        if (phoneNumber == null || phoneNumber.length() < 7) {
+            return phoneNumber;
+        }
+        return phoneNumber.substring(0, 3) + "****" + phoneNumber.substring(phoneNumber.length() - 4);
+    }
 }

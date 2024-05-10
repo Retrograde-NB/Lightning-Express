@@ -13,5 +13,5 @@ import java.util.List;
  * @Remark 又是程序猿秃头的一天
  */
 public interface SysRoleMapper extends BaseMapper<SysRole> {
-    List<String> getRoleNameById(@Param("id") String id);
+    List<String> getRoleNameById(@Param("id") Long id);
 }

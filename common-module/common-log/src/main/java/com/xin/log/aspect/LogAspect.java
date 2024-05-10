@@ -1,6 +1,7 @@
 package com.xin.log.aspect;
 
 import com.alibaba.fastjson2.JSON;
+import com.xin.common.constant.RedisConstants;
 import com.xin.common.domain.system.dto.SysOperationLogDTO;
 import com.xin.common.redis.service.RedisService;
 import com.xin.common.utils.*;
@@ -89,7 +90,7 @@ public class LogAspect {
             sysOperationLogDTO.setOperationIp(ip);
             sysOperationLogDTO.setOperationUrl(StringUtils.substring(ServletUtils.getRequest().getRequestURI(), 0, 255));
             // TODO 获取后台用户名(暂时使用) Long id = JwtUtils.getId();
-            String token = redisService.getCacheObject("log-token").toString();
+            String token = redisService.getCacheObject(RedisConstants.TOKEN).toString();
             String userName = JwtUtils.getUserName(token);
             if (StringUtils.isNotBlank(userName)) {
                 sysOperationLogDTO.setOperationName(userName);

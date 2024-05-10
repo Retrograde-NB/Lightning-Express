@@ -10,21 +10,20 @@ import java.util.List;
  * @Remark 又是程序猿秃头的一天
  */
 public class SysUserPageVO extends PageVO{
-    private List<SysUserVO> sysUserVOList;
+    private List<SysUserVO> records;
 
     @Override
     public String toString() {
         return "SysUserPageVO{" +
-                "sysUserVOList=" + sysUserVOList +
-                ", total=" + total +
+                "records=" + records +
                 '}';
     }
 
-    public List<SysUserVO> getSysUserVOList() {
-        return sysUserVOList;
+    public List<SysUserVO> getRecords() {
+        return records;
     }
 
-    public void setSysUserVOList(List<SysUserVO> sysUserVOList) {
-        this.sysUserVOList = sysUserVOList;
+    public void setRecords(List<SysUserVO> records) {
+        this.records = records;
     }
 }

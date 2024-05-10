@@ -30,7 +30,7 @@ public class SysRoleController {
     @GetMapping("/getRoleNameById/{id}")
     @ApiOperation(value = "根据用户id获取角色")
     @Log(title = "根据用户id获取角色列表", operationType = OperationType.OTHER)
-    public ResponseResult<List<String>> getRoleNameById(@PathVariable("id") String id){
+    public ResponseResult<List<String>> getRoleNameById(@PathVariable("id") Long id){
         return ResponseResult.ok(sysRoleService.getRoleNameById(id));
     }
 }

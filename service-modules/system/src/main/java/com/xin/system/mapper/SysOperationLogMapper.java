@@ -1,6 +1,7 @@
 package com.xin.system.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.xin.system.domain.dto.SysOperationLogPageDTO;
 import com.xin.system.domain.entity.SysOperationLog;
 
 import java.util.List;
@@ -14,5 +15,5 @@ import java.util.List;
 public interface SysOperationLogMapper extends BaseMapper<SysOperationLog> {
     int add(SysOperationLog sysOperationLog);
 
-    List<SysOperationLog> page();
+    List<SysOperationLog> page(SysOperationLogPageDTO sysOperationLogPageDTO);
 }

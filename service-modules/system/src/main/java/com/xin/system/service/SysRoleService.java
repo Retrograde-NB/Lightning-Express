@@ -12,5 +12,5 @@ import java.util.List;
  * @Remark 又是程序猿秃头的一天
  */
 public interface SysRoleService extends IService<SysRole> {
-    List<String> getRoleNameById(String id);
+    List<String> getRoleNameById(Long id);
 }

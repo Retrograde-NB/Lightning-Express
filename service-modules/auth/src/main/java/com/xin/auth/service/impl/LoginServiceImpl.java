@@ -83,7 +83,7 @@ public class LoginServiceImpl implements LoginService {
         }
         String token = JwtUtils.getJwtToken(responseResult.getData().getId(), responseResult.getData().getUserName());
         // TODO 存储token为存储日志使用（暂时）
-        redisService.setCacheObject("log-token", token);
+        redisService.setCacheObject(RedisConstants.TOKEN, token);
         redisService.setCacheObject(RedisConstants.ADMIN_TOKEN_KEY + responseResult.getData().getId(), token);
         logService.recordLoginInfoLog(PackageUtils.getSysLoginInfoDTO(username, "登陆成功", Constants.LOGIN_SUCCESS));
         return token;

@@ -5,6 +5,8 @@ import com.xin.common.result.ResponseResult;
 import com.xin.common.utils.PageUtils;
 import com.xin.log.annotation.Log;
 import com.xin.log.enums.OperationType;
+import com.xin.security.annotation.IsPermissions;
+import com.xin.security.enums.VerificationMode;
 import com.xin.system.domain.dto.SysUserPageDTO;
 import com.xin.system.domain.vo.SysUserPageVO;
 import com.xin.system.service.SysUserService;
@@ -65,6 +67,7 @@ public class SysUserController {
     @GetMapping("/page")
     @ApiOperation(value = "获取用户分页数据")
     @Log(title = "获取用户分页数据", operationType = OperationType.OTHER)
+    @IsPermissions("system:user:query1")
     public ResponseResult<SysUserPageVO> page(SysUserPageDTO sysUserPageDTO){
         PageUtils.startPage();
         return sysUserService.page(sysUserPageDTO);

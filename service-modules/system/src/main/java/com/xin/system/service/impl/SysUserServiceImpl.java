@@ -1,20 +1,19 @@
 package com.xin.system.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
 import com.xin.common.domain.auth.vo.UserInfoVo;
 import com.xin.common.result.ResponseResult;
 import com.xin.common.utils.ReflectionUtils;
+import com.xin.common.utils.StringUtils;
 import com.xin.system.domain.dto.SysUserPageDTO;
 import com.xin.system.domain.entity.SysUser;
 import com.xin.system.domain.vo.SysUserPageVO;
 import com.xin.system.domain.vo.SysUserVO;
 import com.xin.system.mapper.SysUserMapper;
+import com.xin.system.service.SysRoleService;
 import com.xin.system.service.SysUserService;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -33,6 +32,12 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 
     @Resource
     private SysUserMapper sysUserMapper;
+
+    private final SysRoleService sysRoleService;
+
+    public SysUserServiceImpl(SysRoleService sysRoleService) {
+        this.sysRoleService = sysRoleService;
+    }
 
     @Override
     public ResponseResult<UserInfoVo> getUserInfoByUsername(String username) {
@@ -63,12 +68,17 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         List<SysUserVO> sysUserVOList = sysUserList.stream().map(sysUser -> {
             SysUserVO sysUserVO = ReflectionUtils.newInstance(SysUserVO.class);
             BeanUtils.copyProperties(sysUser, sysUserVO);
+            sysUserVO.setPhoneNumber(StringUtils.desensitizePhoneNumber(sysUser.getPhoneNumber()));
+            sysUserVO.setRoleList(sysRoleService.getRoleNameById(sysUser.getId()));
             return sysUserVO;
         }).collect(Collectors.toList());
         // 封装数据
         SysUserPageVO sysUserPageVO = ReflectionUtils.newInstance(SysUserPageVO.class);
         sysUserPageVO.setTotal(sysUserPageInfo.getTotal());
-        sysUserPageVO.setSysUserVOList(sysUserVOList);
+        sysUserPageVO.setSize(sysUserPageInfo.getSize());
+        sysUserPageVO.setPages(sysUserPageInfo.getPages());
+        sysUserPageVO.setCurrent(sysUserPageInfo.getPageNum());
+        sysUserPageVO.setRecords(sysUserVOList);
         return ResponseResult.ok(sysUserPageVO);
     }
 }

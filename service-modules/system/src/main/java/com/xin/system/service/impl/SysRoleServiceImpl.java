@@ -21,7 +21,7 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> impl
     @Resource
     private SysRoleMapper sysRoleMapper;
     @Override
-    public List<String> getRoleNameById(String id) {
+    public List<String> getRoleNameById(Long id) {
         return sysRoleMapper.getRoleNameById(id);
     }
 }
