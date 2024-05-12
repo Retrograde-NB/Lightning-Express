@@ -6,15 +6,13 @@ import com.xin.common.utils.PageUtils;
 import com.xin.log.annotation.Log;
 import com.xin.log.enums.OperationType;
 import com.xin.security.annotation.IsPermissions;
+import com.xin.system.domain.dto.SysUserAddDTO;
 import com.xin.system.domain.dto.SysUserPageDTO;
 import com.xin.system.domain.vo.SysUserPageVO;
 import com.xin.system.service.SysUserService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 /**
@@ -70,5 +68,13 @@ public class SysUserController {
     public ResponseResult<SysUserPageVO> page(SysUserPageDTO sysUserPageDTO){
         PageUtils.startPage();
         return sysUserService.page(sysUserPageDTO);
+    }
+
+    @PostMapping("/add")
+    @ApiOperation(value = "添加用户数据")
+    @Log(title = "添加用户数据", operationType = OperationType.INSERT)
+    @IsPermissions("system:user:add")
+    public ResponseResult<String> add(@RequestBody SysUserAddDTO sysUserAddDTO){
+        return sysUserService.add(sysUserAddDTO);
     }
 }

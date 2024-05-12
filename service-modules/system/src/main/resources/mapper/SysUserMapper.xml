@@ -1,20 +1,91 @@
 <?xml version="1.0" encoding="UTF8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.xin.system.mapper.SysUserMapper">
+    <insert id="add">
+        insert into sys_user (
+        <if test="id != null and id != 0">id,</if>
+        <if test="status != null and status != ''">status,</if>
+        <if test="phoneNumber != null and phoneNumber != ''">phoneNumber,</if>
+        <if test="avatar != null and avatar != ''">avatar,</if>
+        <if test="createBy != null and createBy != ''">create_by,</if>
+        create_time,
+        <if test="updateBy != null and updateBy != ''">update_by,</if>
+        update_time,
+        user_name,
+        nick_name,
+        password
+        ) values (
+        <if test="id != null and id != 0">#{id},</if>
+        <if test="status != null and status != ''">#{status},</if>
+        <if test="phoneNumber != null and phoneNumber != ''">#{phoneNumber},</if>
+        <if test="avatar != null and avatar != ''">#{avatar},</if>
+        <if test="createBy != null and createBy != ''">#{createBy},</if>
+        sysdate(),
+        <if test="updateBy != null and updateBy != ''">#{updateBy},</if>
+        sysdate(),
+        #{userName},
+        #{nickName},
+        #{password}
+        )
+    </insert>
 
     <select id="getUserInfoByUsername" resultType="com.xin.system.domain.entity.SysUser">
-        select id, user_name, nick_name, password, status, phone_number, avatar, create_by, create_time, update_by, update_time, del_flag
-        from sys_user where user_name = #{username} and del_flag = '0'
+        select id,
+               user_name,
+               nick_name,
+               password,
+               status,
+               phone_number,
+               avatar,
+               create_by,
+               create_time,
+               update_by,
+               update_time,
+               del_flag
+        from sys_user
+        where user_name = #{username}
+          and del_flag = '0'
     </select>
     <select id="getUserInfoById" resultType="com.xin.system.domain.entity.SysUser">
-        select id, user_name, nick_name, password, status, phone_number, avatar, create_by, create_time, update_by, update_time, del_flag
-        from sys_user where id = #{id} and del_flag = '0'
+        select id,
+               user_name,
+               nick_name,
+               password,
+               status,
+               phone_number,
+               avatar,
+               create_by,
+               create_time,
+               update_by,
+               update_time,
+               del_flag
+        from sys_user
+        where id = #{id}
+          and del_flag = '0'
     </select>
     <select id="page" resultType="com.xin.system.domain.entity.SysUser">
-        select id, user_name, nick_name, password, status, phone_number, avatar, create_by, create_time, update_by, update_time, del_flag
+        select id, user_name, nick_name, password, status, phone_number, avatar, create_by, create_time, update_by,
+        update_time, del_flag
         from sys_user where del_flag = '0'
         <if test="userName != null and userName != ''">and user_name like concat('%', #{userName}, '%')</if>
         <if test="phoneNumber != null and phoneNumber != ''">and phone_number = #{phoneNumber}</if>
         <if test="status != null and status != ''">and status = #{status}</if>
+    </select>
+    <select id="getUserInfoByPhoneNumber" resultType="com.xin.system.domain.entity.SysUser">
+        select id,
+               user_name,
+               nick_name,
+               password,
+               status,
+               phone_number,
+               avatar,
+               create_by,
+               create_time,
+               update_by,
+               update_time,
+               del_flag
+        from sys_user
+        where phone_number = #{phoneNumber}
+          and del_flag = '0'
     </select>
 </mapper>

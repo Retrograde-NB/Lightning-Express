@@ -23,11 +23,10 @@
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
 
-        <!--  common  -->
+        <!-- Alibaba Fastjson -->
         <dependency>
-            <groupId>com.xin</groupId>
-            <artifactId>common</artifactId>
-            <version>1.0.0</version>
+            <groupId>com.alibaba.fastjson2</groupId>
+            <artifactId>fastjson2</artifactId>
         </dependency>
 
     </dependencies>

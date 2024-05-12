@@ -19,4 +19,8 @@ public interface SysUserMapper extends BaseMapper<SysUser> {
     SysUser getUserInfoById(@Param("id") Long id);
 
     List<SysUser> page(SysUserPageDTO sysUserPageDTO);
+
+    SysUser getUserInfoByPhoneNumber(String phoneNumber);
+
+    int add(SysUser sysUser);
 }

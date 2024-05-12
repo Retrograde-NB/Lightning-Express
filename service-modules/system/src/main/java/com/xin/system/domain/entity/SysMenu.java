@@ -1,5 +1,9 @@
 package com.xin.system.domain.entity;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.Length;
 
@@ -23,6 +27,7 @@ public class SysMenu implements Serializable {
      */
     @NotNull(message="[菜单ID]不能为空")
     @ApiModelProperty("菜单ID")
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
     /**
      * 菜单名称
@@ -112,7 +117,7 @@ public class SysMenu implements Serializable {
     /**
      * 更新时间
      */
-    //@ApiModelProperty("更新时间")
+    @ApiModelProperty("更新时间")
     private Date updateTime;
     /**
      * 备注
