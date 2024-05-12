@@ -1,6 +1,7 @@
 package com.xin.security.annotation;
 
 import com.xin.security.enums.VerificationMode;
+import org.springframework.core.annotation.Order;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -15,6 +16,7 @@ import java.lang.annotation.Target;
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ ElementType.METHOD, ElementType.TYPE })
+@Order(value = -200)
 public @interface IsPermissions {
     /**
      * 需要校验的权限码

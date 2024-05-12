@@ -44,11 +44,6 @@ public class AsyncConfig implements AsyncConfigurer {
         return executor;
     }
 
-    // AsyncConfigurer 接口中还有一个 getAsyncUncaughtExceptionHandler 方法，
-    // 用于处理异步任务执行过程中未捕获的异常。默认情况下，如果不实现此方法，
-    // 异步任务中的未捕获异常将被记录到日志中，但不会传播给调用线程。
-    // 如果你需要处理这些异常，你可以重写这个方法，并提供一个自定义的 AsyncUncaughtExceptionHandler。
-
     @Override
     public AsyncUncaughtExceptionHandler getAsyncUncaughtExceptionHandler() {
         return new AsyncExceptionHandler();
