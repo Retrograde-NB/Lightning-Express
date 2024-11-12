@@ -8,7 +8,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 192.168.109.4:1111
+        server-addr: 192.168.150.5:1111
 #        server-addr: 127.0.0.1:8848
         username: nacos
         password: nacos
@@ -17,7 +17,7 @@ spring:
       #这里配置的这个参数是为了解决spring boot和swagger版本不兼容的问题
       matching-strategy: ant_path_matcher
   redis:
-    host: 192.168.109.4
+    host: 192.168.150.5
 
 swagger:
   enabled: true
